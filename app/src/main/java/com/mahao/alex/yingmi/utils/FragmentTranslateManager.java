@@ -27,7 +27,7 @@ public class FragmentTranslateManager implements RadioGroup.OnCheckedChangeListe
         this.mFragmentLayoutId = mFragmentLayoutId;
     }
 
-    private void init() {
+    public  void init() {
         rg_menu.setOnCheckedChangeListener(this);
         ((RadioButton) rg_menu.getChildAt(0)).setChecked(true);
 
@@ -48,7 +48,7 @@ public class FragmentTranslateManager implements RadioGroup.OnCheckedChangeListe
      */
     private void changeFragment(int position) {
         Fragment fragment = mFragments.get(position);
-        if(fragment.isAdded()){
+        if(!fragment.isAdded()){
             mFragmentMgr.beginTransaction().add(mFragmentLayoutId,fragment).commit();
         }
 
