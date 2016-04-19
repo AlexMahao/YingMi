@@ -1,0 +1,33 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--      android:drawableTop="@mipmap/home_btn_home_highlight"
+            android:button="@null"
+            android:text="首页"
+            android:textSize="@dimen/text_font_micro"
+            android:textColor="@color/text_black"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"-->
+    <style name="MainMenuRadioButton">
+        <item name="android:button">@null</item>
+        <item name="android:textSize">@dimen/text_font_micro</item>
+        <item name="android:textColor">@drawable/selector_main_menu_text</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+
+    </style>
+
+</resources>

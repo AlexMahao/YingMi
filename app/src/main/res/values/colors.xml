@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- 文字颜色  蓝色 -->
+    <color name="text_blue">#318fff</color>
+
+    <!-- 文字颜色  黑色 -->
+    <color name="text_black">#0e0e0e</color>
+
+    <!-- 文字颜色  灰色 -->
+    <color name="text_gray">#68707d</color>
+
+    <!-- 输入框字体颜色 -->
+    <color name="text_edit">#c0c0c0</color>
+
+    <!-- 橙色 -->
+    <color name="orange">#fc5900</color>
+
+    <!-- 背景颜色 淡蓝色 -->
+    <color name="bg_blue">#eef4fb</color>
+
+    <!-- 按钮颜色 深蓝色 -->
+    <color name="blue">#318fff</color>
+
+
+    <color name="transparent">#00000000</color>
+
+    <!-- 菜单背景 -->
+    <color name="gray_menu">#f6f6f6</color>
+
+    <!-- 边界线 灰色 margin -->
+    <color name="gray_border">#ebebeb</color>
+
+    <!-- RadioButton -->
+    <color name="tab_bg_normal">#000066</color>
+    <color name="tab_bg_select">#9966FF</color>
+
+</resources>
