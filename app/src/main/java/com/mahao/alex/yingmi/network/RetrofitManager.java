@@ -1,7 +1,10 @@
 package com.mahao.alex.yingmi.network;
 
 import com.mahao.alex.yingmi.bean.AppVersion;
+import com.mahao.alex.yingmi.bean.Commodity;
+import com.mahao.alex.yingmi.bean.Production;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -38,6 +41,7 @@ public class RetrofitManager {
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(okHttpClient)
+
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
@@ -66,14 +70,36 @@ public class RetrofitManager {
      */
     public Observable<AppVersion> getAppVersion(){
        return mYingMiApi.getAppVersion()
+               .map(new HttpResultFuc<AppVersion>())
                 .subscribeOn(Schedulers.io())
-                .map(new HttpResultFuc<AppVersion>())
                 .observeOn(AndroidSchedulers.mainThread());
 
     }
 
 
+    /**
+     * 获取热门电影
+     * @return
+     */
+    public Observable<List<Production>> getHotProduction(){
 
+        return mYingMiApi.getHotProduction()
+                .map(new HttpResultFuc<List<Production>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
+    /**
+     * 通过电影获取同款物品
+     * @return
+     */
+    public Observable<List<Commodity>> getCommodityListByProduction( String productionId){
+        return mYingMiApi.getCommodityListByProduction(productionId)
+                .map(new HttpResultFuc<List<Commodity>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 
 
 }

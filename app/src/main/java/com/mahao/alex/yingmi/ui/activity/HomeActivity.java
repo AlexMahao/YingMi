@@ -42,24 +42,10 @@ public class HomeActivity extends BaseActivity {
     }
 
 
-  /*
-    public void onUpdate(){
-
-        RetrofitManager
-                .getInstance()
-                .getAppVersion()
-                .subscribe(new ProgressSubscriber<AppVersion>(this) {
-                    @Override
-                    public void onNext(AppVersion appVersion) {
-                        tv_versionName.setText(appVersion.getVersionName());
-                        tv_versionDesc.setText(appVersion.getVersionDesc());
-                    }
-                });
-
-    }*/
-
     @Override
     public int getLayoutId() {
+
         return R.layout.activity_home;
+
     }
 }

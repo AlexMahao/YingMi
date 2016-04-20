@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleBar">
+        <attr name="leftType" >
+
+            <enum name="gone" value="0"/>
+            <enum name="customMenu" value="1"/>
+            <enum name="back" value="2"/>
+        </attr>
+        <attr name="leftText" format="string" />
+        <attr name = "leftImage" format="reference"/>
+
+
+
+        <attr name="centerType">
+            <enum name="gone" value="0"/>
+            <enum name ="customMenu" value="1"/>
+        </attr>
+        <attr name="centerText" format="string"/>
+
+
+        <attr name="rightType">
+            <enum name="gone" value="0"/>
+            <enum name="customMenu" value="1"/>
+        </attr>
+
+        <attr name="rightText" format="string"/>
+
+
+        <attr name="title_background" format="color"/>
+
+        <attr name="title_textColor" format="color"/>
+
+        <attr name="title_alpha" format="float"/>
+    </declare-styleable>
+
+</resources>

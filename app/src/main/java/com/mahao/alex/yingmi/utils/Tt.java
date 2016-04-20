@@ -1,5 +1,7 @@
 package com.mahao.alex.yingmi.utils;
 
+import android.widget.Toast;
+
 import com.mahao.alex.yingmi.base.App;
 
 /**
@@ -14,7 +16,7 @@ public class Tt {
      */
     public static void init(){
         if(sToast==null){
-            sToast = new android.widget.Toast(App.getContext());
+            sToast = Toast.makeText(App.getContext(),"toast",Toast.LENGTH_SHORT);
 
         }
 
