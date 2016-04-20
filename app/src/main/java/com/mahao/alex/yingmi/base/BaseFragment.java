@@ -1,5 +1,6 @@
 package com.mahao.alex.yingmi.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -35,4 +36,10 @@ public abstract  class BaseFragment extends Fragment {
     protected abstract void afterCreate();
 
     public abstract int getLayoutId();
+
+
+    public void intent2Activity(Class classes){
+        Intent intent = new Intent(getActivity(),classes);
+        startActivity(intent);
+    }
 }

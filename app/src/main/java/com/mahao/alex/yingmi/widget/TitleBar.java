@@ -267,9 +267,9 @@ public class TitleBar extends RelativeLayout {
             mRightText = ta.getString(R.styleable.TitleBar_rightText);
 
 
-            mBackground = ta.getColor(R.styleable.TitleBar_title_background,Color.WHITE);
+            mBackground = ta.getColor(R.styleable.TitleBar_title_background,Color.BLACK);
 
-            mTextColor = ta.getColor(R.styleable.TitleBar_title_textColor,Color.BLACK);
+            mTextColor = ta.getColor(R.styleable.TitleBar_title_textColor,Color.WHITE);
 
             mAlpha = ta.getFloat(R.styleable.TitleBar_title_alpha,1);
         }

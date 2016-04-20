@@ -37,5 +37,6 @@
     <!-- RadioButton -->
     <color name="tab_bg_normal">#000066</color>
     <color name="tab_bg_select">#9966FF</color>
+    <color name="white">#fff</color>
 
 </resources>

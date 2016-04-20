@@ -20,6 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.activity.LoginActivity"
+            android:launchMode="singleTask"
+            />
+        <activity android:name=".ui.activity.RegistActivity"
+            android:launchMode="singleTask"
+            />
+        <activity android:name=".ui.activity.ResetPasswordActivity"
+            android:launchMode="singleTask"
+            />
     </application>
 
 </manifest>

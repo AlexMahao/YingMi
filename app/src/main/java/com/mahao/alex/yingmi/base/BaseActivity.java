@@ -1,8 +1,12 @@
 package com.mahao.alex.yingmi.base;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+
+import com.mahao.alex.yingmi.utils.AppManager;
 
 import butterknife.ButterKnife;
 
@@ -15,6 +19,8 @@ public abstract class BaseActivity  extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+
+        AppManager.getAppManager().finishActivity(this);
 
         ButterKnife.bind(this);
 
@@ -33,4 +39,19 @@ public abstract class BaseActivity  extends AppCompatActivity{
      * @return
      */
     public abstract  int getLayoutId();
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        AppManager.getAppManager().finishActivity(this);
+
+    }
+
+
+    public void intent2Activity(Class classes){
+        Intent intent = new Intent(this,classes);
+        startActivity(intent);
+    }
 }
