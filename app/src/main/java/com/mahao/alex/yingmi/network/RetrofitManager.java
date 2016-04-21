@@ -3,6 +3,7 @@ package com.mahao.alex.yingmi.network;
 import com.mahao.alex.yingmi.bean.AppVersion;
 import com.mahao.alex.yingmi.bean.Commodity;
 import com.mahao.alex.yingmi.bean.Production;
+import com.mahao.alex.yingmi.bean.Theme;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -101,5 +102,18 @@ public class RetrofitManager {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+
+    /**
+     * 获取热门同款物品
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    public Observable<List<Theme>> getHotTheme(String page,String pageSize){
+        return mYingMiApi.getHotTheme(page,pageSize)
+                .map(new HttpResultFuc<List<Theme>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 
 }

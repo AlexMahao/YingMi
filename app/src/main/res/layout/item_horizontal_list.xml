@@ -8,8 +8,8 @@
 
         android:id="@+id/item_horizontal_list_image"
         android:scaleType="fitXY"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
 
     <TextView
         android:layout_marginTop="5dp"

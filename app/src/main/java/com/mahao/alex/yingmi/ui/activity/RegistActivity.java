@@ -1,12 +1,7 @@
 package com.mahao.alex.yingmi.ui.activity;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
-
-import com.mahao.alex.yingmi.MainActivity;
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseActivity;
 import com.mahao.alex.yingmi.bean.User;
@@ -97,7 +92,7 @@ public class RegistActivity extends BaseActivity{
             public void onSuccess() {
                 Tt.showShort("注册成功");
                 AppManager.getAppManager().finishAllActivity();
-                intent2Activity(MainActivity.class);
+                intent2Activity(HomeActivity.class);
             }
 
             @Override

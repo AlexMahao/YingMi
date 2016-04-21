@@ -1,6 +1,5 @@
 package com.mahao.alex.yingmi.base;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,7 +19,7 @@ public abstract class BaseActivity  extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
 
-        AppManager.getAppManager().finishActivity(this);
+        AppManager.getAppManager().addActivity(this);
 
         ButterKnife.bind(this);
 

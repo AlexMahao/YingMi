@@ -19,7 +19,6 @@ import com.mahao.alex.yingmi.network.RetrofitManager;
 import com.mahao.alex.yingmi.ui.adapter.CommodityAdapter;
 import com.mahao.alex.yingmi.ui.adapter.HomeShufAdapter;
 import com.mahao.alex.yingmi.utils.BitmapUtils;
-import com.mahao.alex.yingmi.utils.DimenUtils;
 import com.mahao.alex.yingmi.widget.TitleBar;
 
 import java.util.ArrayList;
@@ -110,13 +109,14 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
     private void initCommodityList() {
         mCommoditys = new ArrayList<>();
 
-        mCommodityAdapter = new CommodityAdapter(mCommoditys);
+        mCommodityAdapter = new CommodityAdapter(mCommoditys,getActivity());
 
         LinearLayoutManager horizontal = new LinearLayoutManager(getContext());
 
         horizontal.setOrientation(LinearLayoutManager.HORIZONTAL);
         mHomeCommodityRecycle.setLayoutManager(horizontal);
 
+        //mHomeCommodityRecycle.setItemAnimator(new DefaultItemAnimator());
         mHomeCommodityRecycle.setAdapter(mCommodityAdapter);
     }
 
@@ -138,8 +138,8 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
                             ImageView imageView = new ImageView(getContext());
                             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
-                            int padding = DimenUtils.dp2px(40);
-                            imageView.setPadding(padding, padding, padding, padding);
+
+                            imageView.setPadding(HomeShufAdapter.sWidthPadding, HomeShufAdapter.sHeightPadding, HomeShufAdapter.sWidthPadding, HomeShufAdapter.sHeightPadding);
                             BitmapUtils.loadImage(imageView, production.getFileImagePath());
                             mShufImages.add(imageView);
 

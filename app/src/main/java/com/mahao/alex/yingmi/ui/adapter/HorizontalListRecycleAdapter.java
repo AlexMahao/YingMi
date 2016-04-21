@@ -1,5 +1,6 @@
 package com.mahao.alex.yingmi.ui.adapter;
 
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +23,11 @@ public abstract  class HorizontalListRecycleAdapter<T> extends RecyclerView.Adap
 
     protected List<T> datas;
 
-    public HorizontalListRecycleAdapter(List<T> data){
+    protected Activity mActivity;
+
+    public HorizontalListRecycleAdapter(List<T> data,Activity activity){
         datas = data;
+        mActivity = activity;
     }
 
     @Override

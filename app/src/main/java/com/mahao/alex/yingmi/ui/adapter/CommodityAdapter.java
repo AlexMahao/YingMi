@@ -1,5 +1,8 @@
 package com.mahao.alex.yingmi.ui.adapter;
 
+import android.app.Activity;
+
+import com.mahao.alex.yingmi.base.BaseActivity;
 import com.mahao.alex.yingmi.bean.Commodity;
 import com.mahao.alex.yingmi.utils.BitmapUtils;
 import com.mahao.alex.yingmi.utils.L;
@@ -12,8 +15,8 @@ import java.util.List;
  */
 public class CommodityAdapter extends HorizontalListRecycleAdapter<Commodity> {
 
-    public CommodityAdapter(List<Commodity> data) {
-        super(data);
+    public CommodityAdapter(List<Commodity> data, Activity activity) {
+        super(data,activity);
     }
 
     @Override

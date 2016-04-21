@@ -16,6 +16,10 @@ import java.util.List;
  */
 public class HomeShufAdapter extends PagerAdapter implements ViewPager.OnPageChangeListener {
 
+    public static int sWidthPadding = DimenUtils.dp2px(24);
+
+    public static int sHeightPadding = DimenUtils.dp2px(32);
+
     private int padding;
 
     private List<ImageView> mImageViewList;
@@ -59,12 +63,14 @@ public class HomeShufAdapter extends PagerAdapter implements ViewPager.OnPageCha
 
         if (mImageViewList.size()>0&&position<mImageViewList.size()) {
             //当前手指触摸滑动的页面,从0页滑动到1页 offset越来越大，padding越来越大
-            int outPadding = (int) (positionOffset * padding);
-            mImageViewList.get(position).setPadding(outPadding, outPadding, outPadding, outPadding);
+            int outHeightPadding = (int) (positionOffset * sHeightPadding);
+            int outWidthPadding = (int) (positionOffset * sWidthPadding);
+            mImageViewList.get(position).setPadding(outWidthPadding, outHeightPadding, outWidthPadding, outHeightPadding);
 
             if (position < mImageViewList.size() - 1) {
-                int inPadding = (int) ((1 - positionOffset) * padding);
-                mImageViewList.get(position + 1).setPadding(inPadding, inPadding, inPadding, inPadding);
+                int inWidthPadding = (int) ((1 - positionOffset) * sWidthPadding);
+                int inHeightPadding = (int) ((1 - positionOffset) * sHeightPadding);
+                mImageViewList.get(position + 1).setPadding(inWidthPadding,inHeightPadding ,inWidthPadding, inHeightPadding);
             }
         }
 

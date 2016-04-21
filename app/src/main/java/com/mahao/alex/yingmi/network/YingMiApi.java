@@ -4,6 +4,7 @@ import com.mahao.alex.yingmi.bean.AppVersion;
 import com.mahao.alex.yingmi.bean.Commodity;
 import com.mahao.alex.yingmi.bean.HttpResult;
 import com.mahao.alex.yingmi.bean.Production;
+import com.mahao.alex.yingmi.bean.Theme;
 
 import java.util.List;
 
@@ -36,4 +37,9 @@ public interface YingMiApi {
     @FormUrlEncoded
     @POST("getCommodityListByProduction")
     Observable<HttpResult<List<Commodity>>> getCommodityListByProduction(@Field("productionId") String productionId);
+
+
+    @FormUrlEncoded
+    @POST("getHotTheme")
+    Observable<HttpResult<List<Theme>>> getHotTheme(@Field("page") String page,@Field("pageSize") String pageSize);
 }

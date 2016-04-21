@@ -1,12 +1,7 @@
 package com.mahao.alex.yingmi.ui.activity;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
-
-import com.mahao.alex.yingmi.MainActivity;
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.App;
 import com.mahao.alex.yingmi.base.BaseActivity;
@@ -32,12 +27,12 @@ public class LoginActivity extends BaseActivity {
      * 手机
      */
     @Bind(R.id.login_phone_edit)
-    private EditText phoneEt;
+    public EditText phoneEt;
     /**
      * 密码
      */
     @Bind(R.id.login_password_edit)
-    private EditText passwordEt;
+    public EditText passwordEt;
 
     private String password,phone;
 
@@ -79,7 +74,7 @@ public class LoginActivity extends BaseActivity {
                     App.user = user;
                     AppManager.getAppManager().finishAllActivity();
 
-                    intent2Activity(MainActivity.class);
+                    intent2Activity(HomeActivity.class);
 
                 }else{
                    Tt.showLong("登陆失败："+e.getMessage());

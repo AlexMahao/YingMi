@@ -1,12 +1,7 @@
 package com.mahao.alex.yingmi.ui.activity;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
-import com.mahao.alex.yingmi.MainActivity;
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseActivity;
 import com.mahao.alex.yingmi.bean.User;
@@ -22,7 +17,6 @@ import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.RequestSMSCodeListener;
 import cn.bmob.v3.listener.ResetPasswordByCodeListener;
-import cn.bmob.v3.listener.SaveListener;
 
 /**
  * 重置密码
