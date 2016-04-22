@@ -3,23 +3,25 @@ package com.mahao.alex.yingmi.ui.fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseFragment;
 import com.mahao.alex.yingmi.bean.Commodity;
 import com.mahao.alex.yingmi.bean.Production;
+import com.mahao.alex.yingmi.bean.Theme;
 import com.mahao.alex.yingmi.network.ResultSubscriber;
 import com.mahao.alex.yingmi.network.RetrofitManager;
 import com.mahao.alex.yingmi.ui.adapter.CommodityAdapter;
+import com.mahao.alex.yingmi.ui.adapter.DividerItemDecoration;
 import com.mahao.alex.yingmi.ui.adapter.HomeShufAdapter;
+import com.mahao.alex.yingmi.ui.adapter.ThemeAdapter;
 import com.mahao.alex.yingmi.utils.BitmapUtils;
 import com.mahao.alex.yingmi.widget.TitleBar;
+import com.mahao.alex.yingmi.widget.VerticalScrollerLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +41,8 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
     @Bind(R.id.rl_home_shuf)
     RelativeLayout rl_home_shuf;
 
-    @Bind(R.id.scroll_home)
-    ScrollView scrollView;
+    @Bind(R.id.home_vertical_scroll)
+    VerticalScrollerLayout scrollView;
 
     @Bind(R.id.iv_home_shuf_bg)
     ImageView iv_home_shuf_bg;
@@ -51,6 +53,9 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
     @Bind(R.id.home_commodity_recycleView)
     RecyclerView mHomeCommodityRecycle;
 
+    @Bind(R.id.home_theme_recycle)
+    RecyclerView mHomeThemeRecycle;
+
     private HomeShufAdapter mShufAdapter;
 
     private List<ImageView> mShufImages;
@@ -59,8 +64,53 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
 
     private List<Commodity> mCommoditys;
 
+    private List<Theme> mThemes;
+
+    private ThemeAdapter mThemeAdapter;
+
     @Override
     protected void afterCreate() {
+        //初始化电影同款物品
+        initShufProducitons();
+
+        //初始化同款物品列表
+        initCommodityList();
+
+        initTheme();
+        /**
+         * 请求热门电影并加载图片
+         */
+        requestHotProduction();
+
+
+        requestHotTheme();
+    }
+
+    private void initTheme() {
+        mThemes = new ArrayList<>();
+
+        mThemeAdapter  = new ThemeAdapter(mThemes,getActivity());
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mHomeThemeRecycle.setLayoutManager(layoutManager);
+        mHomeThemeRecycle.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL_LIST));
+        mHomeThemeRecycle.setAdapter(mThemeAdapter);
+    }
+
+    private void requestHotTheme() {
+        RetrofitManager.getInstance().getHotTheme("1","2")
+                .subscribe(new ResultSubscriber<List<Theme>>(){
+                    @Override
+                    public void onNext(List<Theme> o) {
+
+                        mThemeAdapter.refresh(o);
+                    }
+                });
+    }
+
+
+    private void initShufProducitons() {
         mProductions = new ArrayList<>();
         mShufImages = new ArrayList<>();
         mShufAdapter = new HomeShufAdapter(mShufImages);
@@ -77,30 +127,23 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
             }
         });
 
+
         /**
          * 设置滚动监听
          *
          */
-        scrollView.setOnTouchListener(new View.OnTouchListener() {
+        scrollView.setScrollChangeListener(new VerticalScrollerLayout.ScrollChangeListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Log.i("info", v.getScrollY() + "");
-
-                int scrollY = v.getScrollY();
-                if (scrollY <= 1000 && scrollY > 0) {
-                    titleBar.setAlpha(scrollY / 1000.0f);
+            public void scrollY(int y) {
+                if(y<=1000&&y>=0){
+                    titleBar.setAlpha(y/1000f);
                 }
-                return false;
             }
         });
 
-        /**
-         * 请求热门电影并加载图片
-         */
-        requestHotProduction();
 
-
-        initCommodityList();
+        /*//边界回弹，发光效果
+        scrollView.setOverScrollMode(View.OVER_SCROLL_ALWAYS);*/
     }
 
     /**

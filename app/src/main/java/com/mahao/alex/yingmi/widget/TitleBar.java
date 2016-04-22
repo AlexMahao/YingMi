@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -292,6 +291,6 @@ public class TitleBar extends RelativeLayout {
     public void setAlpha(float alpha){
         mAlpha = alpha;
         mTitleBg.setAlpha(mAlpha);
-        Log.i("info","alpha"+mAlpha);
+
     }
 }

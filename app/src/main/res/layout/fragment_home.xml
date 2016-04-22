@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <ScrollView
-        android:scrollbars="none"
-        android:id="@+id/scroll_home"
+    <com.mahao.alex.yingmi.widget.VerticalScrollerLayout
+        android:id="@+id/home_vertical_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:background="@color/white"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/white">
 
                 <ImageView
                     android:id="@+id/iv_home_shuf_bg"
@@ -36,9 +36,9 @@
 
                     <android.support.v4.view.ViewPager
                         android:id="@+id/vp_home_shuf"
-                        android:layout_centerHorizontal="true"
                         android:layout_width="180dp"
                         android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
 
                         android:clipChildren="false" />
 
@@ -48,14 +48,52 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/home_commodity_recycleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff" />
+
+            <include layout="@layout/layout_underline" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/home_theme_recycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+            <RelativeLayout
                 android:background="#fff"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="60dp">
 
+                <View
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_border" />
 
+                <TextView
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_font_medium"
+                    android:text="继续上拉，加载更多同款产品"
+                    android:textStyle="italic"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="#fff"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
         </LinearLayout>
-    </ScrollView>
 
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1000dp"
+            android:background="@drawable/shape_green" />
+    </com.mahao.alex.yingmi.widget.VerticalScrollerLayout>
     <!-- 标题栏字体颜色，透明度，背景-->
     <com.mahao.alex.yingmi.widget.TitleBar
         android:id="@+id/titlebar"

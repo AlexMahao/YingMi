@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="230dp">
         <ImageView
             android:id="@+id/item_theme_bg_image"
             android:src="@mipmap/item_theme_commodity_bg"
@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <ImageView
-            android:src="@mipmap/item_theme_pic_shadow"
+            android:src="@mipmap/home_pic_themeblack"
             android:scaleType="fitXY"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:id="@+id/item_theme_icon_img"
                 android:src="@mipmap/item_theme_icon"
                 android:layout_width="20dp"
@@ -53,6 +53,7 @@
 
         <TextView
             android:layout_above="@id/ll"
+            android:maxLines="1"
             android:text="的撒赖看见了奖励空间"
             android:textColor="@color/white"
             android:layout_marginLeft="10dp"
@@ -66,6 +67,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/item_theme_commodity_recycle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:background="@color/white"
+        android:layout_height="110dp"/>
 
 </LinearLayout>

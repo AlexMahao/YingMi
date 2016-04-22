@@ -4,6 +4,7 @@ package com.mahao.alex.yingmi.ui.adapter;
 import android.app.Activity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mahao.alex.yingmi.R;
-import com.mahao.alex.yingmi.base.BaseActivity;
 import com.mahao.alex.yingmi.bean.Theme;
 import com.mahao.alex.yingmi.utils.BitmapUtils;
 
@@ -28,7 +28,7 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
     private List<Theme> mThemes;
 
     private Activity mActivity;
-    public ThemeAdapter(List<Theme> mThemes,BaseActivity activity) {
+    public ThemeAdapter(List<Theme> mThemes,Activity activity) {
         this.mThemes = mThemes;
         mActivity = activity;
     }
@@ -66,7 +66,7 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return mThemes == null ? 0 : mThemes.size();
+        return  mThemes.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -91,4 +91,19 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
             ButterKnife.bind(this,itemView);
         }
     }
+
+
+
+    /**
+     * 刷新添加数据
+     *
+     */
+    public void refresh(List<Theme> themes){
+        mThemes.clear();
+        mThemes.addAll(themes);
+        notifyDataSetChanged();
+
+        Log.i("info",getItemCount()+"");
+    }
+
 }
