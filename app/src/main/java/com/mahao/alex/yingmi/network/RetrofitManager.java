@@ -116,4 +116,17 @@ public class RetrofitManager {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+
+    /**
+     * 获取热门同款物品
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    public Observable<List<Commodity>> getHotCommodity(String page,String pageSize){
+        return mYingMiApi.getHotCommodityList(page,pageSize)
+                .map(new HttpResultFuc<List<Commodity>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 }

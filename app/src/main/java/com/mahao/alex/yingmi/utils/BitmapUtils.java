@@ -3,6 +3,7 @@ package com.mahao.alex.yingmi.utils;
 import android.widget.ImageView;
 
 import com.mahao.alex.yingmi.base.App;
+import com.mahao.alex.yingmi.utils.logger.MatrixTransformation;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -18,6 +19,11 @@ public class BitmapUtils {
 
 
     /**
+     * 对图片进行缩放
+     */
+    public static final int MATRIX = 3;
+
+    /**
      * 封装此方法，便于修改图片网络框架
      * @param img
      * @param url
@@ -31,7 +37,15 @@ public class BitmapUtils {
         switch (status){
             case NORMAL:picassoLoader(img,url);break;
             case GAOSI:picassoLoader2Gaosi(img,url);break;
+            case MATRIX:picassoLoader2Matrix(img,url);break;
         }
+
+    }
+
+    private static void picassoLoader2Matrix(ImageView img, String url) {
+        Picasso.with(App.getContext()).load(url).transform(new MatrixTransformation()).into(img);
+
+
 
     }
 

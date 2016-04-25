@@ -1,0 +1,67 @@
+package com.mahao.alex.yingmi.ui.adapter;
+
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.mahao.alex.yingmi.R;
+import com.mahao.alex.yingmi.bean.Commodity;
+import com.mahao.alex.yingmi.utils.BitmapUtils;
+
+import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+/**
+ * Created by mdw on 2016/4/25.
+ */
+public class HomeBottomCommodityAdaptetr extends RecyclerView.Adapter<HomeBottomCommodityAdaptetr.ViewHolder> {
+
+
+    private List<Commodity> mCommoditys;
+
+    public HomeBottomCommodityAdaptetr(List<Commodity> mCommoditys) {
+        this.mCommoditys = mCommoditys;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_bottom_commodity, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        BitmapUtils.loadImage(holder.imageView,mCommoditys.get(position).getCommodityImagePath());
+        holder.tv.setText(mCommoditys.get(position).getCommodityName());
+    }
+
+    @Override
+    public int getItemCount() {
+        return mCommoditys.size();
+    }
+
+    public void refresh(List<Commodity> commodities) {
+        mCommoditys.clear();
+        mCommoditys.addAll(commodities);
+        notifyDataSetChanged();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
+
+        @Bind(R.id.home_bottom_commodity_img)
+        ImageView imageView;
+
+        @Bind(R.id.home_bottom_commodity_title)
+        TextView tv;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this,itemView);
+        }
+    }
+}

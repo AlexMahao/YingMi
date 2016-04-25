@@ -42,4 +42,11 @@ public interface YingMiApi {
     @FormUrlEncoded
     @POST("getHotTheme")
     Observable<HttpResult<List<Theme>>> getHotTheme(@Field("page") String page,@Field("pageSize") String pageSize);
+
+    @FormUrlEncoded
+    @POST("getHotThemeCommodity")
+    Observable<HttpResult<List<Commodity>>> getHotCommodityList(@Field("page") String page,@Field("pageSize") String pageSize);
+
+
+
 }

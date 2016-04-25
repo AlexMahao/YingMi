@@ -126,25 +126,21 @@ public class VerticalScrollerLayout extends ViewGroup {
 
     }
 
- /*   @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-
-        ScrollView
-        return ;
-    }*/
-
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+        Log.i("info","vetrical---onInterceptTouchEvent");
         y = (int) ev.getY();
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 mDownStartX = (int) ev.getY();
                  break;
             case MotionEvent.ACTION_MOVE:
-                if (Math.abs(y - mDownStartX) > mTouchSlop) {
+                if (Math.abs(y - mDownStartX) > mTouchSlop&&getScrollY()<getChildAt(0).getMeasuredHeight()) {
                     mLastY = y;
                     mStart = getScrollY();
+
+                    Log.i("addinfo","parent");
                     return true;
                 }
                /* if(getScrollY()>getChildAt(0).getMeasuredHeight()&&get){
@@ -155,12 +151,13 @@ public class VerticalScrollerLayout extends ViewGroup {
             case MotionEvent.ACTION_UP:
                 break;
         }
-        return super.onInterceptTouchEvent(ev);
+        return false;
     }
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.i("info","vetrical---dispatchTouchEvent");
         y = (int) event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -200,6 +197,7 @@ public class VerticalScrollerLayout extends ViewGroup {
                 break;
         }
         postInvalidate();
+
         return true;
     }
 

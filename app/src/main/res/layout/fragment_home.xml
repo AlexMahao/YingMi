@@ -89,10 +89,11 @@
         </LinearLayout>
 
 
-        <RelativeLayout
+        <fragment
+            android:name="com.mahao.alex.yingmi.ui.fragment.HomeBottomFragment"
             android:layout_width="match_parent"
-            android:layout_height="1000dp"
-            android:background="@drawable/shape_green" />
+            android:layout_height="wrap_content"
+             />
     </com.mahao.alex.yingmi.widget.VerticalScrollerLayout>
     <!-- 标题栏字体颜色，透明度，背景-->
     <com.mahao.alex.yingmi.widget.TitleBar
