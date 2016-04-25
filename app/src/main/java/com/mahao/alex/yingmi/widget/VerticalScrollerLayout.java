@@ -104,7 +104,7 @@ public class VerticalScrollerLayout extends ViewGroup {
 
             mHeight = getChildAt(i).getMeasuredHeight() + mHeight;
         }
-        Log.i("info", "child1:" + getChildAt(0).getMeasuredHeight() + " child2:" + getChildAt(1).getMeasuredHeight());
+       Log.i("info", "child1:" + getChildAt(0).getMeasuredHeight() + " child2:" + getChildAt(1).getMeasuredHeight());
         //setMeasuredDimension(widthMeasureSpec, MeasureSpec.makeMeasureSpec(mHeight,MeasureSpec.EXACTLY));
 
     }
@@ -129,13 +129,13 @@ public class VerticalScrollerLayout extends ViewGroup {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        Log.i("info","vetrical---onInterceptTouchEvent");
         y = (int) ev.getY();
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 mDownStartX = (int) ev.getY();
                  break;
             case MotionEvent.ACTION_MOVE:
+                Log.i("info","scrollY:"+getScrollY());
                 if (Math.abs(y - mDownStartX) > mTouchSlop&&getScrollY()<getChildAt(0).getMeasuredHeight()) {
                     mLastY = y;
                     mStart = getScrollY();
@@ -157,7 +157,7 @@ public class VerticalScrollerLayout extends ViewGroup {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.i("info","vetrical---dispatchTouchEvent");
+       // Log.i("info","vetrical---dispatchTouchEvent");
         y = (int) event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -184,7 +184,7 @@ public class VerticalScrollerLayout extends ViewGroup {
 
                 int scrollAbs = dScrollY - getChildAt(0).getMeasuredHeight() + getBottom();
 
-                Log.i("info", "dscrollY:" + dScrollY + " scrollAbs:" + scrollAbs);
+               Log.i("info", "dscrollY:" + dScrollY + " scrollAbs:" + scrollAbs);
                 if (scrollAbs > 0 && dScrollY - getChildAt(0).getMeasuredHeight() <= 0) {
 
                     if (scrollAbs < mScreenHeight / 3) { //返回之前的偏移量
@@ -198,7 +198,7 @@ public class VerticalScrollerLayout extends ViewGroup {
         }
         postInvalidate();
 
-        return true;
+        return super.onTouchEvent(event);
     }
 
 

@@ -56,6 +56,8 @@ public class HomeBottomFragment extends BaseFragment {
         return R.layout.fragment_home_bottom;
     }
 
+
+
     public void getHotCommodityList() {
          RetrofitManager.getInstance()
                 .getHotCommodity(page+"",pageSize+"")

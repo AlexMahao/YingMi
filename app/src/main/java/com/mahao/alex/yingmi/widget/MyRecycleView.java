@@ -17,6 +17,18 @@ public class MyRecycleView extends RecyclerView {
 
     public MyRecycleView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        addOnScrollListener(new OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                Log.i("info","dx:"+dx+" dy"+dy);
+            }
+        });
     }
 
     public MyRecycleView(Context context, @Nullable AttributeSet attrs, int defStyle) {
@@ -25,9 +37,16 @@ public class MyRecycleView extends RecyclerView {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-
+       // getParent().requestDisallowInterceptTouchEvent(true);
         Log.i("info","recycle---dispatchTouchEvent");
         return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        super.onScrollChanged(l, t, oldl, oldt);
+
+        Log.i("info","recycle---onScrollChanged");
     }
 
     @Override
@@ -37,4 +56,6 @@ public class MyRecycleView extends RecyclerView {
 
         return  super.onTouchEvent(e);
     }
+
+
 }

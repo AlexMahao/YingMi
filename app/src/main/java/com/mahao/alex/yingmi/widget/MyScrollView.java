@@ -2,6 +2,8 @@ package com.mahao.alex.yingmi.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.ScrollView;
 
 /**
@@ -25,6 +27,23 @@ public class MyScrollView extends ScrollView {
 
     public interface  ScrollChangeListener{
         void scrollY(int y);
+    }
+
+
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+
+        Log.i("info","scrollView---dispatchTouchEvent");
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent e) {
+
+        Log.i("info","scrollView---onTouchEvent");
+
+        return  super.onTouchEvent(e);
     }
 
     @Override

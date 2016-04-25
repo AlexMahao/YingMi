@@ -68,6 +68,9 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
 
     private ThemeAdapter mThemeAdapter;
 
+
+
+
     @Override
     protected void afterCreate() {
         //初始化电影同款物品
