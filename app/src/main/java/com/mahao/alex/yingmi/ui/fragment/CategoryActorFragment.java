@@ -9,10 +9,12 @@ import android.util.Log;
 
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseFragment;
+import com.mahao.alex.yingmi.bean.Actor;
 import com.mahao.alex.yingmi.bean.Production;
 import com.mahao.alex.yingmi.network.ProgressSubscriber;
 import com.mahao.alex.yingmi.network.ResultSubscriber;
 import com.mahao.alex.yingmi.network.RetrofitManager;
+import com.mahao.alex.yingmi.ui.adapter.CategoryActorTypeAdapter;
 import com.mahao.alex.yingmi.ui.adapter.CategoryProductionTypeAdapter;
 import com.mahao.alex.yingmi.ui.recycle.RecycleRefreshController;
 import com.mahao.alex.yingmi.utils.Tt;
@@ -25,15 +27,17 @@ import butterknife.Bind;
 /**
  * Created by mdw on 2016/4/26.
  */
-public class CategoryProductionFragment extends BaseFragment {
+public class CategoryActorFragment extends BaseFragment {
 
-    public static CategoryProductionFragment newInstance(String typeName) {
-        CategoryProductionFragment fragment = new CategoryProductionFragment();
+    public static CategoryActorFragment newInstance(String homeTown) {
+        CategoryActorFragment fragment = new CategoryActorFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("typeName", typeName);
+        bundle.putString("homeTown", homeTown);
         fragment.setArguments(bundle);
         return fragment;
     }
+
+    private boolean isLoadMore = true;
 
 
     @Bind(R.id.category_production_child_recycle)
@@ -42,11 +46,11 @@ public class CategoryProductionFragment extends BaseFragment {
     @Bind(R.id.category_production_child_refresh)
     SwipeRefreshLayout refreshLayout;
 
-    private String typeName;
+    private String homeTown;
 
-    private List<Production> mProductions = new ArrayList<>();
+    private List<Actor> mActors = new ArrayList<>();
 
-    private CategoryProductionTypeAdapter mAdapter;
+    private CategoryActorTypeAdapter mAdapter;
 
     private int page = 1;
 
@@ -58,12 +62,12 @@ public class CategoryProductionFragment extends BaseFragment {
 
     @Override
     protected void afterCreate() {
-        typeName = getArguments().getString("typeName");
+        homeTown = getArguments().getString("homeTown");
 
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
         mRecycleView.setLayoutManager(layoutManager);
-        mAdapter = new CategoryProductionTypeAdapter(mProductions);
+        mAdapter = new CategoryActorTypeAdapter(mActors);
         mRecycleView.setAdapter(mAdapter);
         mRecycleView.setItemAnimator(new DefaultItemAnimator());
         requestProduction();
@@ -72,7 +76,7 @@ public class CategoryProductionFragment extends BaseFragment {
         mRecycleView.setOnScrollListener(new RecycleRefreshController() {
             @Override
             public void loadMoreData() {
-                if (mProductions.size() < pageSize || isNet) {
+                if (mActors.size() < pageSize || isNet) {
                     //没有更多数据了
                 } else {
                     addData();
@@ -98,16 +102,28 @@ public class CategoryProductionFragment extends BaseFragment {
 
     private void addData() {
         Log.i("info", "add-------data");
+
+        if(!isLoadMore){
+            //无法加载更多，数据已经结束了。
+            return;
+        }
+
         isNet = true;
+
+
         RetrofitManager.getInstance()
-                .getProductionByType(typeName, page + "", pageSize + "")
-                .subscribe(new ProgressSubscriber<List<Production>>(getActivity()) {
+                .getActorByType(homeTown, page + "", pageSize + "")
+                .subscribe(new ProgressSubscriber<List<Actor>>(getActivity()) {
                     @Override
-                    public void onNext(List<Production> productions) {
-                        Log.i("info",productions.toString());
-                        mAdapter.addData(productions);
+                    public void onNext(List<Actor> actors) {
+
+                        mAdapter.addData(actors);
                         isNet = false;
                         page++;
+
+                        if (actors.size()<pageSize){
+                            isLoadMore = false;
+                        }
                     }
 
                     @Override
@@ -123,11 +139,11 @@ public class CategoryProductionFragment extends BaseFragment {
         isNet = true;
         page = 1;
         RetrofitManager.getInstance()
-                .getProductionByType(typeName, page + "", pageSize + "")
-                .subscribe(new ResultSubscriber<List<Production>>() {
+                .getActorByType(homeTown, page + "", pageSize + "")
+                .subscribe(new ResultSubscriber<List<Actor>>() {
                     @Override
-                    public void onNext(List<Production> productions) {
-                        mAdapter.refresh(productions);
+                    public void onNext(List<Actor> actors) {
+                        mAdapter.refresh(actors);
                         isNet = false;
                         page++;
                         refreshLayout.setRefreshing(false);

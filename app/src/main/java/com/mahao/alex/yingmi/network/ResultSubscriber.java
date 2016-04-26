@@ -27,7 +27,7 @@ public class ResultSubscriber<T> extends Subscriber<T> {
         } else if (e instanceof ConnectException) {
             Tt.showShort("网络中断，请检查您的网络状态");
         } else {
-            Tt.showShort(e.getMessage());
+            Tt.showShort("服务器异常！！！");
         }
     }
 

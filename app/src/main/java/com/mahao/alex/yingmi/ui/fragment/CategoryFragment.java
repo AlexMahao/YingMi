@@ -9,7 +9,9 @@ import com.mahao.alex.yingmi.bean.Production;
 import com.mahao.alex.yingmi.bean.Theme;
 import com.mahao.alex.yingmi.network.ResultSubscriber;
 import com.mahao.alex.yingmi.network.RetrofitManager;
+import com.mahao.alex.yingmi.ui.activity.CategoryActorActivity;
 import com.mahao.alex.yingmi.ui.activity.CategoryProductionActivity;
+import com.mahao.alex.yingmi.ui.activity.CategoryThemeActivity;
 import com.mahao.alex.yingmi.ui.adapter.BaseRecycleAdapter;
 import com.mahao.alex.yingmi.ui.adapter.CategoryActorAdapter;
 import com.mahao.alex.yingmi.ui.adapter.CategoryProductionAdapter;
@@ -145,7 +147,7 @@ public class CategoryFragment extends BaseFragment {
 
     @OnClick(R.id.category_actor_load_more_tv)
     public void actorLoadMore(){
-
+    intent2Activity(CategoryActorActivity.class);
     }
 
     @OnClick(R.id.category_production_load_more_tv)
@@ -154,7 +156,7 @@ public class CategoryFragment extends BaseFragment {
     }
     @OnClick(R.id.category_theme_load_more_tv)
     public void themeLoadMore(){
-
+        intent2Activity(CategoryThemeActivity.class);
     }
 
 }

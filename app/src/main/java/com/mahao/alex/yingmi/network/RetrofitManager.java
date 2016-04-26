@@ -157,4 +157,19 @@ public class RetrofitManager {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+
+    /**
+     * 根据类型获取演员列表
+     * @param homeTown
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    public Observable<List<Actor>> getActorByType(String homeTown,String page,String pageSize){
+        return mYingMiApi.getActorByType(homeTown,page,pageSize)
+                .map(new HttpResultFuc<List<Actor>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 }

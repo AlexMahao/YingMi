@@ -61,4 +61,10 @@ public interface YingMiApi {
                                                                  @Field("page") String page,
                                                                  @Field("pageSize") String pageSize);
 
+    @POST("getActorByType")
+    @FormUrlEncoded
+    Observable<HttpResult<List<Actor>>> getActorByType(@Field("homeTown") String homeTown,
+                                                                 @Field("page") String page,
+                                                                 @Field("pageSize") String pageSize);
+
 }

@@ -1,133 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <include layout="@layout/layout_title" />
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bg_blue"
-        android:orientation="vertical">
-
-        <include layout="@layout/layout_title" />
+        android:layout_height="match_parent">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:background="@color/bg_blue"
+            android:orientation="vertical">
 
-            <TextView
 
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/shape_rect_navigation"
-                android:drawablePadding="10dp"
-                android:text="热门影视"
-                android:textColor="@color/text_black"
-                android:textSize="@dimen/text_font_medium" />
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/category_production_load_more_tv"
-                android:layout_width="wrap_content"
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/shape_rect_navigation"
+                    android:drawablePadding="10dp"
+                    android:text="热门影视"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/text_font_medium" />
+
+                <TextView
+                    android:id="@+id/category_production_load_more_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@mipmap/catalog_btn_more_normal"
+                    android:text="查看更多"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_font_small" />
+
+            </LinearLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/category_production_recycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="10dp"
-                android:drawablePadding="10dp"
-                android:drawableRight="@mipmap/catalog_btn_more_normal"
-                android:text="查看更多"
-                android:textColor="@color/text_gray"
-                android:textSize="@dimen/text_font_small" />
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/shape_rect_navigation"
+                    android:drawablePadding="10dp"
+                    android:text="热门演员"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/text_font_medium" />
+
+                <TextView
+                    android:id="@+id/category_actor_load_more_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@mipmap/catalog_btn_more_normal"
+                    android:text="查看更多"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_font_small" />
+
+            </LinearLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/category_actor_recycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/shape_rect_navigation"
+                    android:drawablePadding="10dp"
+                    android:text="热门主题"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/text_font_medium" />
+
+                <TextView
+                    android:id="@+id/category_theme_load_more_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@mipmap/catalog_btn_more_normal"
+                    android:text="查看更多"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_font_small" />
+
+            </LinearLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/category_theme_recycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
 
         </LinearLayout>
-
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/category_production_recycle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/shape_rect_navigation"
-                android:drawablePadding="10dp"
-                android:text="热门演员"
-                android:textColor="@color/text_black"
-                android:textSize="@dimen/text_font_medium" />
-
-            <TextView
-                android:id="@+id/category_actor_load_more_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="10dp"
-                android:drawablePadding="10dp"
-                android:drawableRight="@mipmap/catalog_btn_more_normal"
-                android:text="查看更多"
-                android:textColor="@color/text_gray"
-                android:textSize="@dimen/text_font_small" />
-
-        </LinearLayout>
-
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/category_actor_recycle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/shape_rect_navigation"
-                android:drawablePadding="10dp"
-                android:text="热门主题"
-                android:textColor="@color/text_black"
-                android:textSize="@dimen/text_font_medium" />
-
-            <TextView
-                android:id="@+id/category_theme_load_more_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="10dp"
-                android:drawablePadding="10dp"
-                android:drawableRight="@mipmap/catalog_btn_more_normal"
-                android:text="查看更多"
-                android:textColor="@color/text_gray"
-                android:textSize="@dimen/text_font_small" />
-
-        </LinearLayout>
-
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/category_theme_recycle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</LinearLayout>

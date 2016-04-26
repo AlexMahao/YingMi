@@ -1,21 +1,22 @@
-package com.mahao.alex.yingmi.ui.fragment;
+package com.mahao.alex.yingmi.ui.activity;
 
-import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 
+import com.a.a.The;
 import com.mahao.alex.yingmi.R;
-import com.mahao.alex.yingmi.base.BaseFragment;
-import com.mahao.alex.yingmi.bean.Production;
+import com.mahao.alex.yingmi.base.BaseActivity;
+import com.mahao.alex.yingmi.bean.Actor;
+import com.mahao.alex.yingmi.bean.Theme;
 import com.mahao.alex.yingmi.network.ProgressSubscriber;
 import com.mahao.alex.yingmi.network.ResultSubscriber;
 import com.mahao.alex.yingmi.network.RetrofitManager;
-import com.mahao.alex.yingmi.ui.adapter.CategoryProductionTypeAdapter;
+import com.mahao.alex.yingmi.ui.adapter.CategoryThemeAdapter;
 import com.mahao.alex.yingmi.ui.recycle.RecycleRefreshController;
+import com.mahao.alex.yingmi.utils.RecycleUtils;
 import com.mahao.alex.yingmi.utils.Tt;
+import com.mahao.alex.yingmi.widget.TitleBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,56 +24,50 @@ import java.util.List;
 import butterknife.Bind;
 
 /**
- * Created by mdw on 2016/4/26.
+ * Created by Alex_MaHao on 2016/4/26.
  */
-public class CategoryProductionFragment extends BaseFragment {
+public class CategoryThemeActivity extends BaseActivity {
 
-    public static CategoryProductionFragment newInstance(String typeName) {
-        CategoryProductionFragment fragment = new CategoryProductionFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("typeName", typeName);
-        fragment.setArguments(bundle);
-        return fragment;
-    }
+    @Bind(R.id.titlebar)
+    TitleBar titleBar;
 
-
-    @Bind(R.id.category_production_child_recycle)
-    RecyclerView mRecycleView;
-
-    @Bind(R.id.category_production_child_refresh)
+    @Bind(R.id.category_theme_child_refresh)
     SwipeRefreshLayout refreshLayout;
 
-    private String typeName;
+    @Bind(R.id.category_theme_child_recycle)
+    RecyclerView mRecycleView;
 
-    private List<Production> mProductions = new ArrayList<>();
 
-    private CategoryProductionTypeAdapter mAdapter;
+    private List<Theme> mThemes = new ArrayList<>();
 
-    private int page = 1;
+    private CategoryThemeAdapter mAdapter;
 
-    private int pageSize = 10;
+    int page = 1;
+
+    int pageSize =10;
 
     //是否正在请求数据
     private boolean isNet = true;
 
 
     @Override
-    protected void afterCreate() {
-        typeName = getArguments().getString("typeName");
+    public void afterCreate() {
 
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        titleBar.setCenterText("更多主题");
 
-        mRecycleView.setLayoutManager(layoutManager);
-        mAdapter = new CategoryProductionTypeAdapter(mProductions);
+        mAdapter = new CategoryThemeAdapter(mThemes);
+
+        RecycleUtils.initVerticalRecyle(mRecycleView);
+
         mRecycleView.setAdapter(mAdapter);
-        mRecycleView.setItemAnimator(new DefaultItemAnimator());
-        requestProduction();
+
+        requestHotTheme();
 
 
         mRecycleView.setOnScrollListener(new RecycleRefreshController() {
             @Override
             public void loadMoreData() {
-                if (mProductions.size() < pageSize || isNet) {
+                if (mThemes.size() < pageSize || isNet) {
                     //没有更多数据了
                 } else {
                     addData();
@@ -87,7 +82,7 @@ public class CategoryProductionFragment extends BaseFragment {
             @Override
             public void onRefresh() {
                 if (!isNet) {
-                    requestProduction();
+                    requestHotTheme();
                 } else {
                     Tt.showShort("不要心急呦~~~");
                     refreshLayout.setRefreshing(false);
@@ -96,16 +91,22 @@ public class CategoryProductionFragment extends BaseFragment {
         });
     }
 
+
+
     private void addData() {
         Log.i("info", "add-------data");
+
+
         isNet = true;
+
+
         RetrofitManager.getInstance()
-                .getProductionByType(typeName, page + "", pageSize + "")
-                .subscribe(new ProgressSubscriber<List<Production>>(getActivity()) {
+                .getHotTheme( page + "", pageSize + "")
+                .subscribe(new ProgressSubscriber<List<Theme>>(this) {
                     @Override
-                    public void onNext(List<Production> productions) {
-                        Log.i("info",productions.toString());
-                        mAdapter.addData(productions);
+                    public void onNext(List<Theme> themes) {
+
+                        mAdapter.addData(themes);
                         isNet = false;
                         page++;
                     }
@@ -115,21 +116,26 @@ public class CategoryProductionFragment extends BaseFragment {
                         super.onError(e);
 
                         isNet = false;
+
                     }
                 });
     }
 
-    private void requestProduction() {
+
+    private void requestHotTheme() {
+
         isNet = true;
+
         page = 1;
+
         RetrofitManager.getInstance()
-                .getProductionByType(typeName, page + "", pageSize + "")
-                .subscribe(new ResultSubscriber<List<Production>>() {
+                .getHotTheme(page+"",pageSize+"")
+                .subscribe(new ResultSubscriber<List<Theme>>(){
                     @Override
-                    public void onNext(List<Production> productions) {
-                        mAdapter.refresh(productions);
-                        isNet = false;
+                    public void onNext(List<Theme> o) {
+                        mAdapter.refresh(o);
                         page++;
+                        isNet =false;
                         refreshLayout.setRefreshing(false);
                     }
 
@@ -144,6 +150,6 @@ public class CategoryProductionFragment extends BaseFragment {
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_category_prodcution;
+        return R.layout.activity_category_theme;
     }
 }

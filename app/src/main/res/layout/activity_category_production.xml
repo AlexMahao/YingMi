@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@color/text_black"
         app:tabIndicatorColor="@color/text_blue"
-        app:tabSelectedTextColor="@color/text_gray"
+        app:tabSelectedTextColor="@color/text_blue"
         app:tabTextColor="@color/white"  />
 
     <android.support.v4.view.ViewPager

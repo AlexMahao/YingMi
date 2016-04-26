@@ -3,6 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="8dp"
+    android:layout_margin="5dp"
     android:layout_height="wrap_content">
 
     <LinearLayout
