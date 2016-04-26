@@ -21,7 +21,7 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
 
     public ProgressSubscriber(Activity activity) {
 
-        this.mProgressDialogHandler = new ProgressDialogHandler(true,this,activity);
+        this.mProgressDialogHandler = new ProgressDialogHandler(false,this,activity);
     }
 
     private void showProgressDialog(){

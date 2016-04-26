@@ -42,6 +42,12 @@ public abstract  class HorizontalListRecycleAdapter<T> extends RecyclerView.Adap
         binddata(holder,datas.get(position));
     }
 
+    public void refresh(List<T> datas){
+        this.datas.clear();
+        this.datas.addAll(datas);
+        notifyDataSetChanged();
+    }
+
     /**
      * 数据绑定
      * @param holder

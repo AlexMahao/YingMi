@@ -9,7 +9,6 @@ import com.mahao.alex.yingmi.bean.Commodity;
 import com.mahao.alex.yingmi.network.ResultSubscriber;
 import com.mahao.alex.yingmi.network.RetrofitManager;
 import com.mahao.alex.yingmi.ui.adapter.HomeBottomCommodityAdaptetr;
-import com.mahao.alex.yingmi.widget.TitleBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +23,6 @@ public class HomeBottomFragment extends BaseFragment {
     @Bind(R.id.home_bottom_commodity_recycle)
     RecyclerView mRecycle;
 
-    @Bind(R.id.home_botton_titlebar)
-    TitleBar mTitleBar;
 
     private List<Commodity> mCommoditylist;
 

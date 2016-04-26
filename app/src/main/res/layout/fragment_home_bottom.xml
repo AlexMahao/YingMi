@@ -1,30 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?><!--<com.mahao.alex.yingmi.widget.MyScrollView xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:orientation="vertical">-->
-<com.mahao.alex.yingmi.widget.MyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <RelativeLayout
+    <com.mahao.alex.yingmi.widget.MyRecycleView
+        android:layout_marginTop="48dp"
+        android:id="@+id/home_bottom_commodity_recycle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" />
 
-
-        <com.mahao.alex.yingmi.widget.TitleBar
-
-            android:id="@+id/home_botton_titlebar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:centerText="点击返回顶部"
-            app:centerType="customMenu"
-            app:leftType="gone"
-            app:title_alpha="1"
-            app:title_background="@android:color/black"
-            app:title_textColor="@android:color/white" />
-
-        <com.mahao.alex.yingmi.widget.MyRecycleView
-            android:id="@+id/home_bottom_commodity_recycle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </RelativeLayout>
-</com.mahao.alex.yingmi.widget.MyScrollView>
+</RelativeLayout>

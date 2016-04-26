@@ -1,5 +1,6 @@
 package com.mahao.alex.yingmi.network;
 
+import com.mahao.alex.yingmi.bean.Actor;
 import com.mahao.alex.yingmi.bean.AppVersion;
 import com.mahao.alex.yingmi.bean.Commodity;
 import com.mahao.alex.yingmi.bean.HttpResult;
@@ -32,6 +33,12 @@ public interface YingMiApi {
 
 
     /**
+     * 获取热门电影
+     */
+    @POST("getHotActor")
+    Observable<HttpResult<List<Actor>>> getHotActor();
+
+    /**
      * 根据电影id获取对应的同款物品
      */
     @FormUrlEncoded
@@ -48,5 +55,10 @@ public interface YingMiApi {
     Observable<HttpResult<List<Commodity>>> getHotCommodityList(@Field("page") String page,@Field("pageSize") String pageSize);
 
 
+    @POST("getProductionByType")
+    @FormUrlEncoded
+    Observable<HttpResult<List<Production>>> getProductionByType(@Field("type") String type,
+                                                                 @Field("page") String page,
+                                                                 @Field("pageSize") String pageSize);
 
 }

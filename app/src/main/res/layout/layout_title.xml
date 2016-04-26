@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mahao.alex.yingmi.widget.TitleBar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/titlebar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:centerText="影觅"
+    app:centerType="customMenu"
+    app:leftType="gone"
+    app:title_alpha="1"
+    app:title_background="@color/text_black"
+    app:title_textColor="@android:color/white" />
+

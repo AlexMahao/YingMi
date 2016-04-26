@@ -293,4 +293,13 @@ public class TitleBar extends RelativeLayout {
         mTitleBg.setAlpha(mAlpha);
 
     }
+
+    /**
+     * 设置中心的文字
+     * @param title
+     */
+    public void setCenterText(String title){
+        mCenterText = title;
+        mCenterTextView.setText(title);
+    }
 }

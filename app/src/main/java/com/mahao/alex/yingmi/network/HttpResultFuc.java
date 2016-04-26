@@ -11,10 +11,9 @@ import rx.functions.Func1;
 public class HttpResultFuc<T> implements Func1<HttpResult<T>,T> {
     @Override
     public T call(HttpResult<T> httpResult) {
-        if(!httpResult.getStatus().equals("1")){
+        if(!("1".equals(httpResult.getStatus()))){
             throw new ApiException(httpResult.getMessage());
         }
-
         return httpResult.getData();
     }
 }

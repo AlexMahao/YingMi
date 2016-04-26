@@ -19,6 +19,10 @@ import android.widget.Scroller;
 public class VerticalScrollerLayout extends ViewGroup {
 
 
+    public static final int TOP = 1;
+    public static final int BOTTOM = 2;
+
+
     private ScrollChangeListener scrollChangeListener;
 
     /**
@@ -136,7 +140,7 @@ public class VerticalScrollerLayout extends ViewGroup {
                  break;
             case MotionEvent.ACTION_MOVE:
                 Log.i("info","scrollY:"+getScrollY());
-                if (Math.abs(y - mDownStartX) > mTouchSlop&&getScrollY()<getChildAt(0).getMeasuredHeight()) {
+                if (Math.abs(y - mDownStartX) > mTouchSlop) {
                     mLastY = y;
                     mStart = getScrollY();
 
@@ -188,8 +192,10 @@ public class VerticalScrollerLayout extends ViewGroup {
                 if (scrollAbs > 0 && dScrollY - getChildAt(0).getMeasuredHeight() <= 0) {
 
                     if (scrollAbs < mScreenHeight / 3) { //返回之前的偏移量
+                        scrollChangeListener.onScollStateChange(TOP);
                         mScroller.startScroll(0, getScrollY(), 0, -scrollAbs);
                     } else {
+                        scrollChangeListener.onScollStateChange(BOTTOM);
                         mScroller.startScroll(0, getScrollY(), 0, getBottom() - scrollAbs);
                     }
                 }
@@ -201,6 +207,13 @@ public class VerticalScrollerLayout extends ViewGroup {
         return super.onTouchEvent(event);
     }
 
+
+    public void scrollToTop(){
+        mScroller.startScroll(0, getScrollY(), 0, -getScrollY());
+        scrollChangeListener.onScollStateChange(TOP);
+        postInvalidate();
+
+    }
 
     @Override
     public void computeScroll() {
@@ -229,6 +242,7 @@ public class VerticalScrollerLayout extends ViewGroup {
 
     public interface  ScrollChangeListener{
         void scrollY(int y);
+        void onScollStateChange(int type);
     }
 }
 

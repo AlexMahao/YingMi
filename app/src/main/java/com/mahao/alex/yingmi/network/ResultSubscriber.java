@@ -20,6 +20,8 @@ public class ResultSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onError(Throwable e) {
+
+        e.printStackTrace();
         if (e instanceof SocketTimeoutException) {
             Tt.showShort("网络中断，请检查您的网络状态");
         } else if (e instanceof ConnectException) {

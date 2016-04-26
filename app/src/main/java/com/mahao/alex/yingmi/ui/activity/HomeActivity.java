@@ -6,7 +6,6 @@ import android.widget.RadioGroup;
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseActivity;
 import com.mahao.alex.yingmi.ui.fragment.CategoryFragment;
-import com.mahao.alex.yingmi.ui.fragment.HomeBottomFragment;
 import com.mahao.alex.yingmi.ui.fragment.HomeFragment;
 import com.mahao.alex.yingmi.ui.fragment.MineFragment;
 import com.mahao.alex.yingmi.ui.fragment.SocialFragment;
@@ -33,7 +32,7 @@ public class HomeActivity extends BaseActivity {
         List<Fragment> fragmentList = new ArrayList<>();
 
         fragmentList.add(new HomeFragment());
-        fragmentList.add(new HomeBottomFragment());
+        fragmentList.add(new CategoryFragment());
         fragmentList.add(new SocialFragment());
         fragmentList.add(new MineFragment());
 

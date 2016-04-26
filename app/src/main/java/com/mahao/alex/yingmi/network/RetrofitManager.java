@@ -1,5 +1,6 @@
 package com.mahao.alex.yingmi.network;
 
+import com.mahao.alex.yingmi.bean.Actor;
 import com.mahao.alex.yingmi.bean.AppVersion;
 import com.mahao.alex.yingmi.bean.Commodity;
 import com.mahao.alex.yingmi.bean.Production;
@@ -126,6 +127,33 @@ public class RetrofitManager {
     public Observable<List<Commodity>> getHotCommodity(String page,String pageSize){
         return mYingMiApi.getHotCommodityList(page,pageSize)
                 .map(new HttpResultFuc<List<Commodity>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
+    /**
+     * 获取热门影视
+     * @return
+     */
+    public Observable<List<Actor>> getHotActor(){
+        return mYingMiApi.getHotActor()
+                .map(new HttpResultFuc<List<Actor>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
+    /**
+     * 根据类型获取热门影视
+     * @param type
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    public Observable<List<Production>> getProductionByType(String type,String page,String pageSize){
+        return mYingMiApi.getProductionByType(type,page,pageSize)
+                .map(new HttpResultFuc<List<Production>>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

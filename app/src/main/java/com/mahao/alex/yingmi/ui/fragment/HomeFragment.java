@@ -56,6 +56,9 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
     @Bind(R.id.home_theme_recycle)
     RecyclerView mHomeThemeRecycle;
 
+    @Bind(R.id.home_botton_titlebar)
+    TitleBar mBottomTitleBar;
+
     private HomeShufAdapter mShufAdapter;
 
     private List<ImageView> mShufImages;
@@ -71,8 +74,19 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
 
 
 
+
     @Override
     protected void afterCreate() {
+        mBottomTitleBar.setVisibility(View.GONE);
+
+        mBottomTitleBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scrollView.scrollToTop();
+            }
+        });
+
+
         //初始化电影同款物品
         initShufProducitons();
 
@@ -140,6 +154,17 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
             public void scrollY(int y) {
                 if(y<=1000&&y>=0){
                     titleBar.setAlpha(y/1000f);
+                }
+            }
+
+            @Override
+            public void onScollStateChange(int type) {
+                if(type==VerticalScrollerLayout.TOP){
+                    titleBar.setVisibility(View.VISIBLE);
+                    mBottomTitleBar.setVisibility(View.GONE);
+                }else{
+                    titleBar.setVisibility(View.GONE);
+                    mBottomTitleBar.setVisibility(View.VISIBLE);
                 }
             }
         });
