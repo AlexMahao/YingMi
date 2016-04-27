@@ -1,9 +1,12 @@
 package com.mahao.alex.yingmi.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by mdw on 2016/4/26.
  */
-public class Actor {
+public class Actor implements Parcelable {
 
 
     /**
@@ -20,6 +23,40 @@ public class Actor {
      * objectId : bdb0a25265
      * updatedAt : 2016-04-26 08:51:37
      */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(actorDesc);
+        dest.writeString(actorId);
+        dest.writeString(actorImagePath);
+        dest.writeString(actorName);
+        dest.writeString(birthDay);
+        dest.writeString(collectionCount);
+        dest.writeString(constellation_CN);
+        dest.writeString(homeTown);
+
+    }
+
+    public  static final Parcelable.Creator<Actor> CREATOR = new Parcelable.Creator<Actor>(){
+
+        @Override
+        public Actor createFromParcel(Parcel source) {
+            Actor actor = new Actor();
+            actor.setActorDesc(source.readString());
+            actor.setActorId(source.readString());
+            actor.setActorImagePath(source.readString());
+            actor.setActorName(source.readString());
+            actor.setBirthDay(source.readString());
+            actor.setCollectionCount(source.readString());
+            actor.setConstellation_CN(source.readString());
+            actor.setHomeTown(source.readString());
+            return actor;
+        }
+
+        @Override
+        public Actor[] newArray(int size) {
+            return new Actor[size];
+        }
+    };
 
     private String actorDesc;
     private String actorId;
@@ -129,4 +166,11 @@ public class Actor {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+
 }

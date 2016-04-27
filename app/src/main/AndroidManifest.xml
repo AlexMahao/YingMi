@@ -40,6 +40,9 @@
             android:name=".ui.activity.CategoryThemeActivity"
             android:launchMode="singleTask" />
 
+        <activity
+            android:name=".ui.activity.ProducitonDetailActivity"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

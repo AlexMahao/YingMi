@@ -172,4 +172,69 @@ public class RetrofitManager {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+
+    /**
+     * 获取电影同款物品
+     */
+    public Observable<List<Theme>> getThemeByProducitonId(String production){
+        return mYingMiApi.getThemeByProductionId(production)
+                .map(new HttpResultFuc<List<Theme>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
+    /**
+     * 获取电影图片
+     */
+    public Observable<List<String>> getPicByProduciton(String production){
+        return mYingMiApi.getPicByProductionId(production)
+                .map(new HttpResultFuc<List<String>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
+    /**
+     * 获取电影演员
+     */
+    public Observable<List<Actor>> getActorByProducitonId(String production){
+        return mYingMiApi.getActorByProduction(production)
+                .map(new HttpResultFuc<List<Actor>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
+    /**
+     * 获取电影同款物品
+     */
+    public Observable<List<Theme>> getThemeByActorId(String actorId){
+        return mYingMiApi.getThemeByActorId(actorId)
+                .map(new HttpResultFuc<List<Theme>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
+    /**
+     * 获取演员
+     */
+    public Observable<List<String>> getPicByActor(String actorId){
+        return mYingMiApi.getPicByAcator(actorId)
+                .map(new HttpResultFuc<List<String>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    /**
+     * 获取演员电影
+     */
+    public Observable<List<Production>> getProductionByActor(String actorId){
+        return mYingMiApi.getProductionByActor(actorId)
+                .map(new HttpResultFuc<List<Production>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 }

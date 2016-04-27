@@ -33,9 +33,9 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<BaseRec
     @Override
     public void onBindViewHolder(BaseRecycleAdapter.BaseViewHolder holder, final int position) {
 
-        /**
+       /* *//**
          * 设置控件的点击事件
-         */
+         *//*
        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,7 +43,7 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<BaseRec
                     onItemClickListener.onClick(position);
                 }
             }
-        });
+        });*/
         bindData(holder,position);
     }
 

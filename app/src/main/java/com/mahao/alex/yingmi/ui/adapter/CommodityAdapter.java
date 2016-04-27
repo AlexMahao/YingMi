@@ -2,10 +2,8 @@ package com.mahao.alex.yingmi.ui.adapter;
 
 import android.app.Activity;
 
-import com.mahao.alex.yingmi.base.BaseActivity;
 import com.mahao.alex.yingmi.bean.Commodity;
 import com.mahao.alex.yingmi.utils.BitmapUtils;
-import com.mahao.alex.yingmi.utils.L;
 
 import java.util.List;
 
@@ -21,7 +19,6 @@ public class CommodityAdapter extends HorizontalListRecycleAdapter<Commodity> {
 
     @Override
     public void binddata(HorizontalListRecycleAdapter.ViewHolder holder, Commodity commodity) {
-        L.object(holder.imgView);
         BitmapUtils.loadImage(holder.imgView,commodity.getCommodityImagePath());
         String text = "";
         if(commodity.getCurrency().equals("人民币")){

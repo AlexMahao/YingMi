@@ -6,17 +6,24 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 /**
+ * 刷新加载
  * Created by mdw on 2016/4/26.
  */
 public abstract  class RecycleRefreshController extends RecyclerView.OnScrollListener {
 
     private LayoutManagerType mLayoutManagerType;
 
+    /**
+     * 最后一个显示的item的索引
+     */
     private int lastVisibleItemPosition;
 
 
     private int[] lastPositions;
 
+    /**
+     * 当前滚动状态
+     */
     private int currentScrollState;
 
     /**
@@ -61,6 +68,11 @@ public abstract  class RecycleRefreshController extends RecyclerView.OnScrollLis
             default:
                 break;
         }
+
+
+
+
+
     }
 
 
@@ -69,15 +81,16 @@ public abstract  class RecycleRefreshController extends RecyclerView.OnScrollLis
         super.onScrollStateChanged(recyclerView, newState);
         //滚动的状态
         currentScrollState = newState;
-        RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+
         //显示的item 数量
+        RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
         int visibleItemCount = layoutManager.getChildCount();
 
         //总的item数量
         int totalItemCount = layoutManager.getItemCount();
         if (visibleItemCount > 0 && currentScrollState == RecyclerView.SCROLL_STATE_IDLE
                 && lastVisibleItemPosition >= totalItemCount -1) {
-           //加载数据
+            //加载数据
             loadMoreData();
         }
     }

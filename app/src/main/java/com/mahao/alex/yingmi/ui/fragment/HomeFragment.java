@@ -1,5 +1,6 @@
 package com.mahao.alex.yingmi.ui.fragment;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,7 @@ import com.mahao.alex.yingmi.bean.Production;
 import com.mahao.alex.yingmi.bean.Theme;
 import com.mahao.alex.yingmi.network.ResultSubscriber;
 import com.mahao.alex.yingmi.network.RetrofitManager;
+import com.mahao.alex.yingmi.ui.activity.ProducitonDetailActivity;
 import com.mahao.alex.yingmi.ui.adapter.CommodityAdapter;
 import com.mahao.alex.yingmi.ui.adapter.DividerItemDecoration;
 import com.mahao.alex.yingmi.ui.adapter.HomeShufAdapter;
@@ -205,8 +207,17 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
                         mProductions.addAll(productions);
 
                         //初始化ViewPager
-                        for (Production production : mProductions) {
+                        for (final Production production : mProductions) {
                             ImageView imageView = new ImageView(getContext());
+                            imageView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(getActivity(), ProducitonDetailActivity.class);
+                                    intent.putExtra("production",production);
+                                    startActivity(intent);
+                                }
+                            });
+
                             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
 

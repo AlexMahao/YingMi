@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--<RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">-->
+
+            <RelativeLayout
+                android:id="@+id/production_detail_top"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
+
+                <ImageView
+                    android:id="@+id/production_detial_top_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/detail_pic_shadow" />
+
+                <ImageView
+                    android:id="@+id/production_detial_top_poster"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="30dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/production_detial_top_poster"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/production_detial_top_poster"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="类型："
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_font_small" />
+
+                        <TextView
+                            android:id="@+id/production_detial_top_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="剧情"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_font_small" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="语言："
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_font_small" />
+
+                        <TextView
+                            android:id="@+id/production_detial_top_language"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="国语"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_font_small" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="上映时间："
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_font_small" />
+
+                        <TextView
+                            android:id="@+id/production_detial_top_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="2016"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_font_small" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <android.support.design.widget.TabLayout
+
+                android:id="@+id/production_detail_tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/production_detail_top"
+                app:tabBackground="@color/white"
+                app:tabIndicatorColor="@color/text_black"
+                app:tabSelectedTextColor="@color/text_black"
+                app:tabTextColor="@color/text_gray" />
+
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/production_detail_vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/production_detail_tab"
+            android:background="@drawable/shape_green"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <!-- </RelativeLayout>-->
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</LinearLayout>

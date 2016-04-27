@@ -67,4 +67,30 @@ public interface YingMiApi {
                                                                  @Field("page") String page,
                                                                  @Field("pageSize") String pageSize);
 
+    @FormUrlEncoded
+    @POST("getThemeByProductionId")
+    Observable<HttpResult<List<Theme>>> getThemeByProductionId(@Field("productionId") String productionId);
+
+    @FormUrlEncoded
+    @POST("getProductionPic")
+    Observable<HttpResult<List<String>>> getPicByProductionId(@Field("productionId") String productionId);
+
+    @FormUrlEncoded
+    @POST("getActorByProduction")
+    Observable<HttpResult<List<Actor>>> getActorByProduction(@Field("productionId") String productionId);
+
+
+    @FormUrlEncoded
+    @POST("getThemeByActorId")
+    Observable<HttpResult<List<Theme>>> getThemeByActorId(@Field("actorId") String actorId);
+
+
+    @FormUrlEncoded
+    @POST("getActorPic")
+    Observable<HttpResult<List<String>>> getPicByAcator(@Field("actorId") String actorId);
+
+    @FormUrlEncoded
+    @POST("getProductionByActor")
+    Observable<HttpResult<List<Production>>> getProductionByActor(@Field("actorId") String actorId);
+
 }
