@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mahao.alex.yingmi.R;
+import com.mahao.alex.yingmi.base.Constant;
 import com.mahao.alex.yingmi.bean.Production;
 import com.mahao.alex.yingmi.ui.activity.ProducitonDetailActivity;
 import com.mahao.alex.yingmi.utils.AppManager;
@@ -33,7 +34,8 @@ public class CategoryProductionTypeAdapter  extends  BaseRecycleAdapter<Producti
             public void onClick(View v) {
                 Intent intent = new Intent(AppManager.getAppManager().currentActivity(), ProducitonDetailActivity.class);
 
-                intent.putExtra("production",datas.get(position));
+                intent.putExtra(Constant.PRODUCTION_ID,datas.get(position).getProductionInfoId());
+                intent.putExtra(Constant.PRODUCTION_NAME,datas.get(position).getFileName());
 
                 AppManager.getAppManager().currentActivity().startActivity(intent);
             }

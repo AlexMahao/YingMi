@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:text="中标题"
             android:textColor="#222"
-            android:textSize="@dimen/text_font_large" />
+            android:textSize="@dimen/text_font_medium" />
 
     </LinearLayout>
 

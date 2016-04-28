@@ -10,7 +10,10 @@ import android.widget.TextView;
 
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseActivity;
+import com.mahao.alex.yingmi.base.Constant;
 import com.mahao.alex.yingmi.bean.Production;
+import com.mahao.alex.yingmi.network.ProgressSubscriber;
+import com.mahao.alex.yingmi.network.RetrofitManager;
 import com.mahao.alex.yingmi.ui.fragment.ProductionDetailCommodityFragment;
 import com.mahao.alex.yingmi.ui.fragment.ProductionDetailDescFragment;
 import com.mahao.alex.yingmi.utils.BitmapUtils;
@@ -28,6 +31,10 @@ import butterknife.Bind;
 public class ProducitonDetailActivity extends BaseActivity {
 
     private Production mProduction;
+
+    private String productinId;
+
+    private String productionName;
 
     @Bind(R.id.production_detial_top_bg)
     ImageView mTopBg;
@@ -60,13 +67,31 @@ public class ProducitonDetailActivity extends BaseActivity {
     private MyAdapter mAdapter;
     @Override
     public void afterCreate() {
-        mProduction = getIntent().getParcelableExtra("production");
+
+        productionName = getIntent().getStringExtra(Constant.PRODUCTION_NAME);
+
+        productinId = getIntent().getStringExtra(Constant.PRODUCTION_ID);
 
         initTitleBar();
 
-        initTopView();
+        requesProduction();
 
-        initBottom();
+
+    }
+
+    private void requesProduction() {
+        RetrofitManager.getInstance()
+                .getProduction(productinId)
+                .subscribe(new ProgressSubscriber<Production>() {
+                    @Override
+                    public void onNext(Production production) {
+                        mProduction =production;
+
+                        initTopView();
+
+                        initBottom();
+                    }
+                });
     }
 
     private void initBottom() {
@@ -83,7 +108,7 @@ public class ProducitonDetailActivity extends BaseActivity {
     }
 
     private void initTitleBar() {
-        mTitleBar.setCenterText(mProduction.getFileName());
+        mTitleBar.setCenterText(productionName);
     }
 
     private void initTopView() {

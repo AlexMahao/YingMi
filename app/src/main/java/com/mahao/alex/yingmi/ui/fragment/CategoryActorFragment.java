@@ -10,12 +10,10 @@ import android.util.Log;
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseFragment;
 import com.mahao.alex.yingmi.bean.Actor;
-import com.mahao.alex.yingmi.bean.Production;
 import com.mahao.alex.yingmi.network.ProgressSubscriber;
 import com.mahao.alex.yingmi.network.ResultSubscriber;
 import com.mahao.alex.yingmi.network.RetrofitManager;
 import com.mahao.alex.yingmi.ui.adapter.CategoryActorTypeAdapter;
-import com.mahao.alex.yingmi.ui.adapter.CategoryProductionTypeAdapter;
 import com.mahao.alex.yingmi.ui.recycle.RecycleRefreshController;
 import com.mahao.alex.yingmi.utils.Tt;
 
@@ -113,7 +111,7 @@ public class CategoryActorFragment extends BaseFragment {
 
         RetrofitManager.getInstance()
                 .getActorByType(homeTown, page + "", pageSize + "")
-                .subscribe(new ProgressSubscriber<List<Actor>>(getActivity()) {
+                .subscribe(new ProgressSubscriber<List<Actor>>() {
                     @Override
                     public void onNext(List<Actor> actors) {
 

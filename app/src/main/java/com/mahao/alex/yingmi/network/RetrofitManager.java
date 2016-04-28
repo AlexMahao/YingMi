@@ -18,7 +18,6 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- *
  * 网络服务管理类
  * Created by mdw on 2016/4/19.
  */
@@ -60,7 +59,7 @@ public class RetrofitManager {
     }
 
 
-    public static  RetrofitManager getInstance(){
+    public static RetrofitManager getInstance() {
 
         return SingletonHolder.INSTANCE;
     }
@@ -68,11 +67,12 @@ public class RetrofitManager {
 
     /**
      * 获取app版本号
+     *
      * @return
      */
-    public Observable<AppVersion> getAppVersion(){
-       return mYingMiApi.getAppVersion()
-               .map(new HttpResultFuc<AppVersion>())
+    public Observable<AppVersion> getAppVersion() {
+        return mYingMiApi.getAppVersion()
+                .map(new HttpResultFuc<AppVersion>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
 
@@ -81,9 +81,10 @@ public class RetrofitManager {
 
     /**
      * 获取热门电影
+     *
      * @return
      */
-    public Observable<List<Production>> getHotProduction(){
+    public Observable<List<Production>> getHotProduction() {
 
         return mYingMiApi.getHotProduction()
                 .map(new HttpResultFuc<List<Production>>())
@@ -94,9 +95,10 @@ public class RetrofitManager {
 
     /**
      * 通过电影获取同款物品
+     *
      * @return
      */
-    public Observable<List<Commodity>> getCommodityListByProduction( String productionId){
+    public Observable<List<Commodity>> getCommodityListByProduction(String productionId) {
         return mYingMiApi.getCommodityListByProduction(productionId)
                 .map(new HttpResultFuc<List<Commodity>>())
                 .subscribeOn(Schedulers.io())
@@ -106,12 +108,13 @@ public class RetrofitManager {
 
     /**
      * 获取热门同款物品
+     *
      * @param page
      * @param pageSize
      * @return
      */
-    public Observable<List<Theme>> getHotTheme(String page,String pageSize){
-        return mYingMiApi.getHotTheme(page,pageSize)
+    public Observable<List<Theme>> getHotTheme(String page, String pageSize) {
+        return mYingMiApi.getHotTheme(page, pageSize)
                 .map(new HttpResultFuc<List<Theme>>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -120,12 +123,13 @@ public class RetrofitManager {
 
     /**
      * 获取热门同款物品
+     *
      * @param page
      * @param pageSize
      * @return
      */
-    public Observable<List<Commodity>> getHotCommodity(String page,String pageSize){
-        return mYingMiApi.getHotCommodityList(page,pageSize)
+    public Observable<List<Commodity>> getHotCommodity(String page, String pageSize) {
+        return mYingMiApi.getHotCommodityList(page, pageSize)
                 .map(new HttpResultFuc<List<Commodity>>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -134,9 +138,10 @@ public class RetrofitManager {
 
     /**
      * 获取热门影视
+     *
      * @return
      */
-    public Observable<List<Actor>> getHotActor(){
+    public Observable<List<Actor>> getHotActor() {
         return mYingMiApi.getHotActor()
                 .map(new HttpResultFuc<List<Actor>>())
                 .subscribeOn(Schedulers.io())
@@ -146,13 +151,14 @@ public class RetrofitManager {
 
     /**
      * 根据类型获取热门影视
+     *
      * @param type
      * @param page
      * @param pageSize
      * @return
      */
-    public Observable<List<Production>> getProductionByType(String type,String page,String pageSize){
-        return mYingMiApi.getProductionByType(type,page,pageSize)
+    public Observable<List<Production>> getProductionByType(String type, String page, String pageSize) {
+        return mYingMiApi.getProductionByType(type, page, pageSize)
                 .map(new HttpResultFuc<List<Production>>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -161,13 +167,14 @@ public class RetrofitManager {
 
     /**
      * 根据类型获取演员列表
+     *
      * @param homeTown
      * @param page
      * @param pageSize
      * @return
      */
-    public Observable<List<Actor>> getActorByType(String homeTown,String page,String pageSize){
-        return mYingMiApi.getActorByType(homeTown,page,pageSize)
+    public Observable<List<Actor>> getActorByType(String homeTown, String page, String pageSize) {
+        return mYingMiApi.getActorByType(homeTown, page, pageSize)
                 .map(new HttpResultFuc<List<Actor>>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -177,7 +184,7 @@ public class RetrofitManager {
     /**
      * 获取电影同款物品
      */
-    public Observable<List<Theme>> getThemeByProducitonId(String production){
+    public Observable<List<Theme>> getThemeByProducitonId(String production) {
         return mYingMiApi.getThemeByProductionId(production)
                 .map(new HttpResultFuc<List<Theme>>())
                 .subscribeOn(Schedulers.io())
@@ -188,7 +195,7 @@ public class RetrofitManager {
     /**
      * 获取电影图片
      */
-    public Observable<List<String>> getPicByProduciton(String production){
+    public Observable<List<String>> getPicByProduciton(String production) {
         return mYingMiApi.getPicByProductionId(production)
                 .map(new HttpResultFuc<List<String>>())
                 .subscribeOn(Schedulers.io())
@@ -199,7 +206,7 @@ public class RetrofitManager {
     /**
      * 获取电影演员
      */
-    public Observable<List<Actor>> getActorByProducitonId(String production){
+    public Observable<List<Actor>> getActorByProducitonId(String production) {
         return mYingMiApi.getActorByProduction(production)
                 .map(new HttpResultFuc<List<Actor>>())
                 .subscribeOn(Schedulers.io())
@@ -210,7 +217,7 @@ public class RetrofitManager {
     /**
      * 获取电影同款物品
      */
-    public Observable<List<Theme>> getThemeByActorId(String actorId){
+    public Observable<List<Theme>> getThemeByActorId(String actorId) {
         return mYingMiApi.getThemeByActorId(actorId)
                 .map(new HttpResultFuc<List<Theme>>())
                 .subscribeOn(Schedulers.io())
@@ -221,7 +228,7 @@ public class RetrofitManager {
     /**
      * 获取演员
      */
-    public Observable<List<String>> getPicByActor(String actorId){
+    public Observable<List<String>> getPicByActor(String actorId) {
         return mYingMiApi.getPicByAcator(actorId)
                 .map(new HttpResultFuc<List<String>>())
                 .subscribeOn(Schedulers.io())
@@ -231,9 +238,44 @@ public class RetrofitManager {
     /**
      * 获取演员电影
      */
-    public Observable<List<Production>> getProductionByActor(String actorId){
+    public Observable<List<Production>> getProductionByActor(String actorId) {
         return mYingMiApi.getProductionByActor(actorId)
                 .map(new HttpResultFuc<List<Production>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
+    /**
+     * 获取同款- 主题
+     * @param commodityId
+     * @return
+     */
+    public Observable<Theme> getThemeByCommodity(String commodityId) {
+        return mYingMiApi.getThemeByCommodity(commodityId)
+                .map(new HttpResultFuc<Theme>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
+
+    /**
+     *
+     */
+    public Observable<Production> getProduction(String productionId) {
+        return mYingMiApi.getProduction(productionId)
+                .map(new HttpResultFuc<Production>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    /**
+     *
+     */
+    public Observable<Actor> getActor(String actorId) {
+        return mYingMiApi.getActor(actorId)
+                .map(new HttpResultFuc<Actor>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

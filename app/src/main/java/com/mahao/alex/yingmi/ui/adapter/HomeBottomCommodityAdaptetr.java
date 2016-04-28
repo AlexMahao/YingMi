@@ -1,5 +1,6 @@
 package com.mahao.alex.yingmi.ui.adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mahao.alex.yingmi.R;
+import com.mahao.alex.yingmi.base.Constant;
 import com.mahao.alex.yingmi.bean.Commodity;
+import com.mahao.alex.yingmi.ui.activity.CommodityDetailActivity;
+import com.mahao.alex.yingmi.utils.AppManager;
 import com.mahao.alex.yingmi.utils.BitmapUtils;
 
 import java.util.List;
@@ -35,9 +39,18 @@ public class HomeBottomCommodityAdaptetr extends RecyclerView.Adapter<HomeBottom
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         BitmapUtils.loadImage(holder.imageView,mCommoditys.get(position).getCommodityImagePath());
         holder.tv.setText(mCommoditys.get(position).getCommodityName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AppManager.getAppManager().currentActivity(), CommodityDetailActivity.class);
+                intent.putExtra(Constant.COMMODITY_ID,mCommoditys.get(position).getCommodityId());
+                AppManager.getAppManager().currentActivity().startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseFragment;
+import com.mahao.alex.yingmi.base.Constant;
 import com.mahao.alex.yingmi.bean.Commodity;
 import com.mahao.alex.yingmi.bean.Production;
 import com.mahao.alex.yingmi.bean.Theme;
@@ -213,7 +214,10 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
                                 @Override
                                 public void onClick(View v) {
                                     Intent intent = new Intent(getActivity(), ProducitonDetailActivity.class);
-                                    intent.putExtra("production",production);
+
+                                    intent.putExtra(Constant.PRODUCTION_ID,production.getProductionInfoId());
+                                    intent.putExtra(Constant.PRODUCTION_NAME,production.getFileName());
+
                                     startActivity(intent);
                                 }
                             });

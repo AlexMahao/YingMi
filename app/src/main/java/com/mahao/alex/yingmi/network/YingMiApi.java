@@ -81,16 +81,32 @@ public interface YingMiApi {
 
 
     @FormUrlEncoded
-    @POST("getThemeByActorId")
+    @POST("getThemeByActor")
     Observable<HttpResult<List<Theme>>> getThemeByActorId(@Field("actorId") String actorId);
 
 
     @FormUrlEncoded
-    @POST("getActorPic")
+    @POST("getPicByActor")
     Observable<HttpResult<List<String>>> getPicByAcator(@Field("actorId") String actorId);
 
     @FormUrlEncoded
     @POST("getProductionByActor")
     Observable<HttpResult<List<Production>>> getProductionByActor(@Field("actorId") String actorId);
+
+    //--------------未实现
+
+    @FormUrlEncoded
+    @POST("getThemeByCommodity")
+    Observable<HttpResult<Theme>> getThemeByCommodity(@Field("commodityId") String commodityId);
+
+    @FormUrlEncoded
+    @POST("getProduction")
+    Observable<HttpResult<Production>> getProduction(@Field("productionId") String productionId);
+
+
+    @FormUrlEncoded
+    @POST("getActor")
+    Observable<HttpResult<Actor>> getActor(@Field("actorId") String actorId);
+
 
 }

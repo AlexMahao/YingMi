@@ -1,7 +1,5 @@
 package com.mahao.alex.yingmi.network;
 
-import android.app.Activity;
-
 import com.mahao.alex.yingmi.utils.Tt;
 
 import java.net.ConnectException;
@@ -19,9 +17,9 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
     private ProgressDialogHandler mProgressDialogHandler;
 
 
-    public ProgressSubscriber(Activity activity) {
+    public ProgressSubscriber() {
 
-        this.mProgressDialogHandler = new ProgressDialogHandler(false,this,activity);
+        this.mProgressDialogHandler = new ProgressDialogHandler(false,this);
     }
 
     private void showProgressDialog(){
@@ -53,6 +51,7 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
 
     @Override
     public void onError(Throwable e) {
+        e.printStackTrace();
         if (e instanceof SocketTimeoutException) {
             Tt.showShort("网络中断，请检查您的网络状态");
         } else if (e instanceof ConnectException) {

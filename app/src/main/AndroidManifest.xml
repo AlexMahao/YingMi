@@ -42,7 +42,17 @@
 
         <activity
             android:name=".ui.activity.ProducitonDetailActivity"
-            android:launchMode="singleTask" />
+            />
+
+        <activity
+            android:name=".ui.activity.ActorDetailActivity"
+            />
+
+        <activity android:name=".ui.activity.CommodityDetailActivity"/>
+
+        <activity android:name=".ui.activity.WebActivity"
+            android:launchMode="singleTask"
+            />
     </application>
 
 </manifest>

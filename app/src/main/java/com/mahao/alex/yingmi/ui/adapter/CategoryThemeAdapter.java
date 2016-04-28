@@ -1,11 +1,16 @@
 package com.mahao.alex.yingmi.ui.adapter;
 
+import android.content.Intent;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mahao.alex.yingmi.R;
+import com.mahao.alex.yingmi.base.Constant;
 import com.mahao.alex.yingmi.bean.Theme;
+import com.mahao.alex.yingmi.ui.activity.CommodityDetailActivity;
+import com.mahao.alex.yingmi.utils.AppManager;
 import com.mahao.alex.yingmi.utils.BitmapUtils;
 
 import java.util.List;
@@ -21,7 +26,7 @@ public class CategoryThemeAdapter extends BaseRecycleAdapter<Theme> {
     }
 
     @Override
-    protected void bindData(BaseViewHolder holder, int position) {
+    protected void bindData(BaseViewHolder holder, final int position) {
        BitmapUtils.loadImage((ImageView) holder.getView(R.id.item_theme_bg_image),datas.get(position).getThemeImg());
 
         ((TextView) holder.getView(R.id.item_theme_title_tv)).setText(datas.get(position).getThemeDesc());
@@ -36,6 +41,14 @@ public class CategoryThemeAdapter extends BaseRecycleAdapter<Theme> {
 
         }
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AppManager.getAppManager().currentActivity(), CommodityDetailActivity.class);
+                intent.putExtra(Constant.COMMODITY_ID,datas.get(position).getThemeId());
+                AppManager.getAppManager().currentActivity().startActivity(intent);
+            }
+        });
 
 
     }

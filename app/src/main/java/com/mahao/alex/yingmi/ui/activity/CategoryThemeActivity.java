@@ -4,10 +4,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.a.a.The;
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseActivity;
-import com.mahao.alex.yingmi.bean.Actor;
 import com.mahao.alex.yingmi.bean.Theme;
 import com.mahao.alex.yingmi.network.ProgressSubscriber;
 import com.mahao.alex.yingmi.network.ResultSubscriber;
@@ -102,7 +100,7 @@ public class CategoryThemeActivity extends BaseActivity {
 
         RetrofitManager.getInstance()
                 .getHotTheme( page + "", pageSize + "")
-                .subscribe(new ProgressSubscriber<List<Theme>>(this) {
+                .subscribe(new ProgressSubscriber<List<Theme>>() {
                     @Override
                     public void onNext(List<Theme> themes) {
 

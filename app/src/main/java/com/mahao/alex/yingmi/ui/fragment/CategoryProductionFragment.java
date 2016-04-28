@@ -101,7 +101,7 @@ public class CategoryProductionFragment extends BaseFragment {
         isNet = true;
         RetrofitManager.getInstance()
                 .getProductionByType(typeName, page + "", pageSize + "")
-                .subscribe(new ProgressSubscriber<List<Production>>(getActivity()) {
+                .subscribe(new ProgressSubscriber<List<Production>>() {
                     @Override
                     public void onNext(List<Production> productions) {
                         Log.i("info",productions.toString());

@@ -10,7 +10,10 @@ import android.widget.TextView;
 
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseActivity;
+import com.mahao.alex.yingmi.base.Constant;
 import com.mahao.alex.yingmi.bean.Actor;
+import com.mahao.alex.yingmi.network.ProgressSubscriber;
+import com.mahao.alex.yingmi.network.RetrofitManager;
 import com.mahao.alex.yingmi.ui.fragment.ActorDetailCommodityFragment;
 import com.mahao.alex.yingmi.ui.fragment.ActorDetailDescFragment;
 import com.mahao.alex.yingmi.utils.BitmapUtils;
@@ -28,6 +31,10 @@ import butterknife.Bind;
 public class ActorDetailActivity extends BaseActivity {
 
     private Actor mActor;
+
+    private String actorId;
+
+    private String actorName;
 
     @Bind(R.id.actor_detial_top_bg)
     ImageView mTopBg;
@@ -56,20 +63,39 @@ public class ActorDetailActivity extends BaseActivity {
     @Bind(R.id.actor_detail_vp)
     ViewPager viewPager;
 
-    private String[]  mTab = {"单品","资料"};
+    private String[] mTab = {"单品", "资料"};
 
     private List<Fragment> fragmentList = new ArrayList<>();
 
     private MyAdapter mAdapter;
+
     @Override
     public void afterCreate() {
-        mActor = getIntent().getParcelableExtra("actor");
+
+        actorId = getIntent().getStringExtra(Constant.ACTOR_ID);
+
+        actorName = getIntent().getStringExtra(Constant.ACTOR_NAME);
 
         initTitleBar();
 
-        initTopView();
+        requestActor();
 
-        initBottom();
+    }
+
+    private void requestActor() {
+        RetrofitManager.getInstance()
+                .getActor(actorId)
+                .subscribe(new ProgressSubscriber<Actor>() {
+                    @Override
+                    public void onNext(Actor actor) {
+
+                        mActor = actor;
+
+                        initTopView();
+
+                        initBottom();
+                    }
+                });
     }
 
     private void initBottom() {
@@ -86,15 +112,15 @@ public class ActorDetailActivity extends BaseActivity {
     }
 
     private void initTitleBar() {
-        mTitleBar.setCenterText(mActor.getActorName());
+        mTitleBar.setCenterText(actorName);
     }
 
     private void initTopView() {
-        BitmapUtils.loadImage(mTopBg,mActor.getActorImagePath(),BitmapUtils.GAOSI);
+        BitmapUtils.loadImage(mTopBg, mActor.getActorImagePath(), BitmapUtils.GAOSI);
 
-        BitmapUtils.loadImage(mPoster,mActor.getActorImagePath());
-
-        mYearView.setText(mActor.getBirthDay());
+        BitmapUtils.loadImage(mPoster, mActor.getActorImagePath());
+        String time = mActor.getBirthDay();
+        mYearView.setText(time.substring(0,time.indexOf("T")));
 
         mHomeTownView.setText(mActor.getHomeTown());
 
@@ -110,7 +136,7 @@ public class ActorDetailActivity extends BaseActivity {
     }
 
 
-    class MyAdapter extends FragmentPagerAdapter{
+    class MyAdapter extends FragmentPagerAdapter {
 
         public MyAdapter(FragmentManager fm) {
             super(fm);

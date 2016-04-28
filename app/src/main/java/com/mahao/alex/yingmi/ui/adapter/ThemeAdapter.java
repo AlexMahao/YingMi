@@ -2,6 +2,7 @@ package com.mahao.alex.yingmi.ui.adapter;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,7 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mahao.alex.yingmi.R;
+import com.mahao.alex.yingmi.base.Constant;
 import com.mahao.alex.yingmi.bean.Theme;
+import com.mahao.alex.yingmi.ui.activity.CommodityDetailActivity;
+import com.mahao.alex.yingmi.utils.AppManager;
 import com.mahao.alex.yingmi.utils.BitmapUtils;
 
 import java.util.List;
@@ -41,7 +45,7 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Theme theme = mThemes.get(position);
+        final Theme theme = mThemes.get(position);
 
         holder.usernameTv.setText(theme.getThemeUsername());
         if(theme.getThemeUsername().equals("alex")){
@@ -49,6 +53,15 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
         }else{
             BitmapUtils.loadImage(holder.icon,theme.getThemeIcon());
         }
+
+        holder.themeBgImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AppManager.getAppManager().currentActivity(), CommodityDetailActivity.class);
+                intent.putExtra(Constant.COMMODITY_ID,theme.getThemeId());
+                AppManager.getAppManager().currentActivity().startActivity(intent);
+            }
+        });
 
         holder.titleTv.setText(theme.getThemeDesc());
 

@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
 
+import com.mahao.alex.yingmi.utils.AppManager;
+
 /**
  * 控制缓冲框显示与隐藏
  * Created by mdw on 2016/4/18.
@@ -27,10 +29,10 @@ public class ProgressDialogHandler extends Handler {
 
 
 
-    public ProgressDialogHandler(boolean mCancelable, ProgressDialogListener mProgressDialogListener, Activity activity) {
+    public ProgressDialogHandler(boolean mCancelable, ProgressDialogListener mProgressDialogListener) {
         this.mCancelable = mCancelable;
         this.mProgressDialogListener = mProgressDialogListener;
-        mActivity = activity;
+        mActivity = AppManager.getAppManager().currentActivity();
     }
 
 

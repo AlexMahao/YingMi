@@ -169,7 +169,6 @@
             android:id="@+id/actor_detail_vp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/production_detail_tab"
             android:background="@drawable/shape_green"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 

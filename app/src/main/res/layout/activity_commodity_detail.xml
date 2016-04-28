@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.mahao.alex.yingmi.widget.MyScrollView
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:id="@+id/scroll"
+        android:layout_marginBottom="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_blue"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <ImageView
+
+                    android:id="@+id/commodity_detail_top_img"
+                    android:scaleType="centerCrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/commodity_detail_top_img"
+                    android:layout_marginLeft="10dp"
+                    android:text="同款推荐"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_font_small" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/commodity_detail_recom_recycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/commodity_detail_cname_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="奔跑吧"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/text_font_medium" />
+
+                <TextView
+                    android:id="@+id/commodity_detail_price_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="￥ 100"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/text_font_large" />
+
+                <TextView
+                    android:id="@+id/commodity_detail_name_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="奔跑吧"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_font_small" />
+
+                <include layout="@layout/layout_underline" />
+
+                <TextView
+                    android:id="@+id/commodity_detail_desc_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="物品描述"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_font_small" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/commodity_detail_them_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/blue"
+                        android:scaleType="centerCrop" />
+
+
+                    <RelativeLayout
+
+                        android:id="@+id/commodity_detail_actor_rl"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+
+                        android:layout_alignParentBottom="true"
+                        android:background="#5fff">
+
+                        <TextView
+                            android:id="@+id/commodity_detail_actor_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:drawableLeft="@mipmap/detail_icon_actor"
+                            android:drawablePadding="10dp"
+                            android:text="王力宏"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_font_small" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="5dp"
+                            android:src="@mipmap/detail_new_icon_more" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/commodity_detail_movie_rl"
+                        android:layout_height="25dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_above="@id/commodity_detail_actor_rl"
+                        android:background="#5fff">
+
+                        <TextView
+                            android:id="@+id/commodity_detail_movie_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:drawableLeft="@mipmap/detail_icon_movie"
+                            android:drawablePadding="10dp"
+                            android:text="虎力全开"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_font_small" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="5dp"
+                            android:src="@mipmap/detail_new_icon_more" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.mahao.alex.yingmi.widget.MyScrollView>
+    <include layout="@layout/layout_title" />
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/commodity_detail_comment"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/detail_btn_comment_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <ImageView
+            android:id="@+id/commodity_detail_like"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/detail_icon_like_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/commodity_detail_buy"
+            android:background="#000"
+            android:gravity="center"
+            android:textSize="@dimen/text_font_medium"
+            android:text="去购买"
+            android:textColor="@color/white"
+            android:layout_weight="3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</RelativeLayout>
