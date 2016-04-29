@@ -20,6 +20,8 @@ import com.mahao.alex.yingmi.widget.BuyDialog;
 import com.mahao.alex.yingmi.widget.MyScrollView;
 import com.mahao.alex.yingmi.widget.TitleBar;
 
+import java.util.ArrayList;
+
 import butterknife.Bind;
 import butterknife.OnClick;
 
@@ -189,6 +191,7 @@ public class CommodityDetailActivity extends BaseActivity {
             public void go() {
                 Intent intent = new Intent(CommodityDetailActivity.this,WebActivity.class);
                 intent.putExtra(Constant.WEB_LINK,mCommodity.getLinkPath());
+                intent.putExtra(Constant.WEB_TITLE,mCommodity.getCommodityName());
                 startActivity(intent);
             }
         });
@@ -196,5 +199,13 @@ public class CommodityDetailActivity extends BaseActivity {
 
     }
 
+    @OnClick(R.id.commodity_detail_top_img)
+    public void showImg(){
+        Intent intent = new Intent(this,ShowImageActivity.class);
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add(mCommodity.getCommodityImagePath());
+        intent.putStringArrayListExtra(Constant.SHOW_IMG_URL,arrayList);
+        startActivity(intent);
+    }
 
 }

@@ -9,7 +9,6 @@ import com.mahao.alex.yingmi.bean.User;
 import com.mahao.alex.yingmi.utils.AppManager;
 import com.mahao.alex.yingmi.utils.StringUtil;
 import com.mahao.alex.yingmi.utils.Tt;
-import com.mahao.alex.yingmi.widget.TitleBar;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -36,19 +35,9 @@ public class LoginActivity extends BaseActivity {
 
     private String password,phone;
 
-    @Bind(R.id.titleBar)
-    TitleBar titleBar;
-
     @Override
     public void afterCreate() {
 
-        //设置标题可返回
-        titleBar.setTitleBarClickListener(new TitleBar.TitleBarClickListener() {
-            @Override
-            public void onLeftClick() {
-                onBackPressed();
-            }
-        });
     }
 
     @Override
@@ -94,6 +83,11 @@ public class LoginActivity extends BaseActivity {
     public void login2regist(){
         //跳转注册
         intent2Activity(RegistActivity.class);
+    }
+
+    @OnClick(R.id.user_close_btn)
+    public void close(){
+        this.finish();
     }
 
 }

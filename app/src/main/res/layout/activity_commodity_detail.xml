@@ -6,13 +6,11 @@
 
 
     <com.mahao.alex.yingmi.widget.MyScrollView
-
         xmlns:android="http://schemas.android.com/apk/res/android"
-
         android:id="@+id/scroll"
-        android:layout_marginBottom="50dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,18 +25,34 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white">
 
-                <ImageView
-
-                    android:id="@+id/commodity_detail_top_img"
-                    android:scaleType="centerCrop"
+                <RelativeLayout
+                    android:id="@+id/rrl"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp" />
+                    android:layout_height="300dp">
+
+                    <ImageView
+
+                        android:id="@+id/commodity_detail_top_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop" />
+                    <TextView
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="点击图片查看大图"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/text_font_small" />
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/commodity_detail_top_img"
+                    android:layout_below="@id/rrl"
                     android:layout_marginLeft="10dp"
                     android:text="同款推荐"
                     android:textColor="@color/text_gray"
@@ -154,11 +168,11 @@
 
 
                     <RelativeLayout
-                        android:layout_width="match_parent"
                         android:id="@+id/commodity_detail_movie_rl"
+                        android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:layout_marginBottom="5dp"
                         android:layout_above="@id/commodity_detail_actor_rl"
+                        android:layout_marginBottom="5dp"
                         android:background="#5fff">
 
                         <TextView
@@ -187,45 +201,46 @@
             </LinearLayout>
         </LinearLayout>
     </com.mahao.alex.yingmi.widget.MyScrollView>
+
     <include layout="@layout/layout_title" />
 
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:background="@color/white"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/commodity_detail_comment"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-            android:src="@mipmap/detail_btn_comment_normal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:src="@mipmap/detail_btn_comment_normal" />
 
 
         <ImageView
             android:id="@+id/commodity_detail_like"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-            android:src="@mipmap/detail_icon_like_normal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:src="@mipmap/detail_icon_like_normal" />
 
         <TextView
             android:id="@+id/commodity_detail_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
             android:background="#000"
             android:gravity="center"
-            android:textSize="@dimen/text_font_medium"
             android:text="去购买"
             android:textColor="@color/white"
-            android:layout_weight="3"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:textSize="@dimen/text_font_medium" />
     </LinearLayout>
 
 </RelativeLayout>

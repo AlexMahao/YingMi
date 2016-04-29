@@ -38,6 +38,7 @@ public class CommodityAdapter extends HorizontalListRecycleAdapter<Commodity> {
             public void onClick(View v) {
                 Intent intent = new Intent(AppManager.getAppManager().currentActivity(), CommodityDetailActivity.class);
                 intent.putExtra(Constant.COMMODITY_ID,commodity.getCommodityId());
+
                 AppManager.getAppManager().currentActivity().startActivity(intent);
 
             }

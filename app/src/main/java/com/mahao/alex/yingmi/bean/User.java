@@ -11,6 +11,27 @@ public class User extends BmobUser {
 
     private String userIcon;
 
+    private String sex;
+
+    private String birthday;
+
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
     public String getUserIcon() {
         return userIcon;
     }
@@ -18,4 +39,15 @@ public class User extends BmobUser {
     public void setUserIcon(String userIcon) {
         this.userIcon = userIcon;
     }
+
+    public static User newInstance(User user) {
+        User u = new User();
+        u.setMobilePhoneNumber(user.getMobilePhoneNumber());
+        u.setUsername(user.getUsername());
+        u.userIcon = user.getUserIcon();
+        u.sex =user.getSex();
+        u.birthday = user.getBirthday();
+        return u;
+    }
+
 }

@@ -5,6 +5,18 @@
 
     <include layout="@layout/layout_title"/>
 
+    <!--
+        android:indeterminateDrawable="@drawable/shape_indeterminate_bar"-->
+    <ProgressBar
+        android:minHeight="5dp"
+        android:id="@+id/progressbar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:max="100"
+        android:progress="20"
+        android:progressDrawable="@drawable/shape_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <WebView
         android:id="@+id/web"
         android:layout_width="match_parent"

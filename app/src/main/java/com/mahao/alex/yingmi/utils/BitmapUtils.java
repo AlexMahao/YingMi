@@ -23,6 +23,12 @@ public class BitmapUtils {
      */
     public static final int MATRIX = 3;
 
+
+    /**
+     * 剪切头像的圆形
+     */
+    public static final int CIRCLE = 4;
+
     /**
      * 封装此方法，便于修改图片网络框架
      * @param img
@@ -38,6 +44,7 @@ public class BitmapUtils {
             case NORMAL:picassoLoader(img,url);break;
             case GAOSI:picassoLoader2Gaosi(img,url);break;
             case MATRIX:picassoLoader2Matrix(img,url);break;
+            case CIRCLE:picassoLoader2Circle(img,url);break;
         }
 
     }
@@ -46,13 +53,14 @@ public class BitmapUtils {
         Picasso.with(App.getContext()).load(url).transform(new MatrixTransformation()).into(img);
 
 
-
     }
 
     private static void picassoLoader(ImageView img,String url){
         Picasso.with(App.getContext()).load(url).into(img);
+    }
 
-
+    private static void picassoLoader2Circle(ImageView img,String url){
+        Picasso.with(App.getContext()).load(url).transform(new CircleTransformation()).into(img);
     }
 
 

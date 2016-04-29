@@ -1,14 +1,16 @@
 package com.mahao.alex.yingmi.ui.activity;
 
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseActivity;
 import com.mahao.alex.yingmi.bean.User;
 import com.mahao.alex.yingmi.utils.AppManager;
 import com.mahao.alex.yingmi.utils.StringUtil;
+import com.mahao.alex.yingmi.utils.TimeCount;
 import com.mahao.alex.yingmi.utils.Tt;
-import com.mahao.alex.yingmi.widget.TitleBar;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -34,17 +36,17 @@ public class ResetPasswordActivity extends BaseActivity {
 
     private String phone ,authCode,password ;
 
-    @Bind(R.id.titleBar)
+    /*@Bind(R.id.titleBar)
     TitleBar titleBar;
-
+*/
     @Override
     public void afterCreate() {
-        titleBar.setTitleBarClickListener(new TitleBar.TitleBarClickListener() {
+       /* titleBar.setTitleBarClickListener(new TitleBar.TitleBarClickListener() {
             @Override
             public void onLeftClick() {
                 onBackPressed();
             }
-        });
+        });*/
     }
 
     @Override
@@ -54,7 +56,7 @@ public class ResetPasswordActivity extends BaseActivity {
 
 
     @OnClick(R.id.resetpsd_auth_code_edit)
-    public void sendAuthCode(){
+    public void sendAuthCode(final View view){
         //获取短信验证码
         phone = mPhoneEt.getText().toString().trim();
 
@@ -68,7 +70,9 @@ public class ResetPasswordActivity extends BaseActivity {
             public void done(Integer integer, BmobException e) {
                 if(e==null){
                     Tt.showLong("已发送短信验证码");
+                    new TimeCount(60*1000,1000, (TextView) view).start();
                 }else{
+                    Tt.showLong("获取短信验证码失败");
                     e.printStackTrace();
                 }
             }
@@ -108,5 +112,10 @@ public class ResetPasswordActivity extends BaseActivity {
         });
 
 
+    }
+
+    @OnClick(R.id.user_close_btn)
+    public void close(){
+        this.finish();
     }
 }

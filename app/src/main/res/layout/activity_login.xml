@@ -1,107 +1,132 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:background="@mipmap/login_pic_bg"
+   >
 
+    <!--
+        <com.mahao.alex.yingmi.widget.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title_alpha="1"
+            app:title_background="@android:color/black"
+            app:title_textColor="@android:color/white"
+            app:centerText="登录"
+            app:centerType="customMenu"
+            app:leftType="back" />-->
 
-    <com.mahao.alex.yingmi.widget.TitleBar
-        android:id="@+id/titleBar"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title_alpha="1"
-        app:title_background="@android:color/black"
-        app:title_textColor="@android:color/white"
-        app:centerText="登录"
-        app:centerType="customMenu"
-        app:leftType="back" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <EditText
-                android:id="@+id/login_phone_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="请输入手机号"
-                android:textSize="@dimen/text_font_medium"
-                android:textColor="@color/text_gray"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/login_password_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="请输入密码"
-                android:textSize="@dimen/text_font_medium"
-                android:textColor="@color/text_gray"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-        </android.support.design.widget.TextInputLayout>
-
-
-        <Button
-            android:textColor="#fff"
-            android:background="@drawable/btn"
-            android:id="@+id/login_submit_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textSize="@dimen/text_font_small"
-            android:text="登录"
-            android:textStyle="bold" />
-
+        app:cardCornerRadius="4dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_centerInParent="true"
+        app:cardElevation="10dp"
+        android:padding="20dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <Button
-                android:textSize="@dimen/text_font_small"
-                android:id="@+id/login_2resetpassword_btn"
-                android:layout_width="wrap_content"
-                android:background="@drawable/btn"
-                android:layout_height="wrap_content"
-                android:text="忘记密码"
-                android:textColor="#fff"
-                />
-
-
-            <Button
-                android:textSize="@dimen/text_font_small"
-                android:layout_marginLeft="20dp"
-                android:textColor="#fff"
-                android:background="@drawable/btn"
-                android:id="@+id/logn_2regist_btn"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="注册" />
+                android:text="Login"
+                android:textStyle="bold|italic"
+                android:textColor="@color/text_black"
+                android:textSize="30dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp">
+
+                <EditText
+                    android:id="@+id/login_phone_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入手机号"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_font_medium" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/login_password_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_font_medium" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/login_submit_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/btn"
+                android:text="登录"
+                android:textColor="#fff"
+                android:textSize="@dimen/text_font_small"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/login_2resetpassword_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="忘记密码"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_font_small" />
+
+
+                <TextView
+                    android:id="@+id/logn_2regist_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="注册"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/text_font_small" />
+            </LinearLayout>
+
         </LinearLayout>
+    </android.support.v7.widget.CardView>
 
-    </LinearLayout>
-</LinearLayout>
+    <ImageView
+        android:id="@+id/user_close_btn"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/login_btn_close_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
+
 

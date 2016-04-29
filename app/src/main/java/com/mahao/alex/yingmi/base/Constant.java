@@ -17,4 +17,9 @@ public class Constant {
 
     public static final String WEB_LINK = "web_link";
 
+    public static final String WEB_TITLE = "web_title";
+
+    public static final String SHOW_IMG_URL = "show_img_url";
+
+    public static final String SHOW_IMG_POSITION = "show_img_position";
 }

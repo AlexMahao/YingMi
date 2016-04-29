@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="右侧按钮"
-            android:textSize="@dimen/text_font_large" />
+            android:textSize="@dimen/text_font_medium" />
 
     </LinearLayout>
 </RelativeLayout>

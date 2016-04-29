@@ -1,9 +1,12 @@
 package com.mahao.alex.yingmi.ui.activity;
 
+import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseActivity;
@@ -23,21 +26,33 @@ public class WebActivity extends BaseActivity {
     @Bind(R.id.web)
     WebView web;
 
+    @Bind(R.id.progressbar)
+    ProgressBar progressBar;
+
     private String url = "";
+
+    private String title = "";
 
     @Override
     public void afterCreate() {
 
         url = getIntent().getStringExtra(Constant.WEB_LINK);
-
+        title = getIntent().getStringExtra(Constant.WEB_TITLE);
+        titleBar.setCenterText(title);
         web.getSettings().setJavaScriptEnabled(true);
 
         web.loadUrl(url);
 
         web.setWebChromeClient(new WebChromeClient(){
+
             @Override
-            public void onReceivedTitle(WebView view, String title) {
-                titleBar.setCenterText(title);
+            public void onProgressChanged(WebView view, int newProgress) {
+                progressBar.setProgress(newProgress);
+               // Log.i("info",newProgress+"");
+               /* if(newProgress==100){
+                    progressBar.setVisibility(View.GONE);
+                }*/
+
             }
         });
 
@@ -45,9 +60,17 @@ public class WebActivity extends BaseActivity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
+                Log.i("info",url);
+                if(url.startsWith("tmall")){
+                    return true;
+                }
                 view.loadUrl(url);
 
                 return true;
+            }
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
             }
         });
 

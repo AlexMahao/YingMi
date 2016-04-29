@@ -53,6 +53,15 @@
         <activity android:name=".ui.activity.WebActivity"
             android:launchMode="singleTask"
             />
+
+        <activity android:name=".ui.activity.ShowImageActivity"
+            android:launchMode="singleTask"
+            />
+
+
+        <activity android:name=".ui.activity.UserInfoActivity"
+            android:launchMode="singleTask"
+            />
     </application>
 
 </manifest>

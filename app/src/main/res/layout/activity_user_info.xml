@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:showDividers="middle"
+    android:divider="@drawable/shape_divider"
+    android:background="@color/bg_blue"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.mahao.alex.yingmi.widget.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:centerText="个人信息"
+        app:leftType="back"
+        app:rightText="保存"
+        app:rightType="customMenu" />
+
+
+    <RelativeLayout
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <LinearLayout
+            android:id="@+id/user_info_icon_ll"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+
+            <ImageView
+
+                android:id="@+id/user_info_icon_img"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/user_info_icon_img"
+                android:text="未上传头像"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/text_font_medium"
+                android:id="@+id/user_info_comment_tv" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:id="@+id/user_info_name_ll">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="昵称："
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_font_medium" />
+
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="王力宏"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_font_medium"
+            android:id="@+id/user_info_name_tv" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:id="@+id/user_info_sex_ll">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="性别"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_font_medium" />
+
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="男"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_font_medium"
+            android:id="@+id/user_info_sex_tv" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:id="@+id/user_info_birthday_ll">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="生日："
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_font_medium" />
+
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="1555555555"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_font_medium"
+            android:id="@+id/user_info_birthday_tv" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="#fff"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="手机号："
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_font_medium" />
+
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="1555555555"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_font_medium"
+            android:id="@+id/user_info_phone_tv" />
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:text="退出登录"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_font_medium"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_info_exit_login" />
+
+</LinearLayout>
