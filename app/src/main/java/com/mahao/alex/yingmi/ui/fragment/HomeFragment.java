@@ -23,6 +23,7 @@ import com.mahao.alex.yingmi.ui.adapter.DividerItemDecoration;
 import com.mahao.alex.yingmi.ui.adapter.HomeShufAdapter;
 import com.mahao.alex.yingmi.ui.adapter.ThemeAdapter;
 import com.mahao.alex.yingmi.utils.BitmapUtils;
+import com.mahao.alex.yingmi.widget.CustomDialog;
 import com.mahao.alex.yingmi.widget.TitleBar;
 import com.mahao.alex.yingmi.widget.VerticalScrollerLayout;
 
@@ -75,11 +76,17 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
     private ThemeAdapter mThemeAdapter;
 
 
+    private CustomDialog dialog ;
 
 
 
     @Override
     protected void afterCreate() {
+
+        dialog = new CustomDialog(getActivity());
+
+        dialog.show();
+
         mBottomTitleBar.setVisibility(View.GONE);
 
         mBottomTitleBar.setOnClickListener(new View.OnClickListener() {

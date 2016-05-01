@@ -1,12 +1,14 @@
 package com.mahao.alex.yingmi.network;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
 
 import com.mahao.alex.yingmi.utils.AppManager;
+import com.mahao.alex.yingmi.widget.CustomDialog;
 
 /**
  * 控制缓冲框显示与隐藏
@@ -25,7 +27,7 @@ public class ProgressDialogHandler extends Handler {
 
     private Activity mActivity;
 
-    private ProgressDialog pd;
+    private Dialog pd;
 
 
 
@@ -41,7 +43,8 @@ public class ProgressDialogHandler extends Handler {
      */
     private void initProgressDialog(){
         if (pd == null) {
-            pd = new ProgressDialog(mActivity);
+            pd = new CustomDialog(mActivity);
+
 
             pd.setCancelable(mCancelable);
 

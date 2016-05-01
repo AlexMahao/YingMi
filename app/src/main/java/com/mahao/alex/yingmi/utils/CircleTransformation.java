@@ -12,6 +12,17 @@ import com.squareup.picasso.Transformation;
  * Created by mdw on 2016/4/20.
  */
 public class CircleTransformation implements Transformation {
+
+    private static  int radius = DimenUtils.dp2px(25) ;
+
+    public CircleTransformation(){
+
+    }
+
+    public CircleTransformation(int radius){
+       // radius = DimenUtils.dp2px(radius);
+    }
+
     @Override
     public Bitmap transform(Bitmap source) {
         Bitmap bitmap = cutCircle(source);
@@ -31,13 +42,13 @@ public class CircleTransformation implements Transformation {
      * @param bmp
      * @return
      */
-    public static Bitmap cutCircle(Bitmap bmp) {
+    public   Bitmap cutCircle(Bitmap bmp) {
         Paint paint = new Paint();
         paint.setShader(new BitmapShader(bmp, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.FILL);
         Bitmap result = Bitmap.createBitmap(bmp.getWidth(), bmp.getHeight(), Bitmap.Config.ARGB_8888);
-        new Canvas(result).drawCircle(DimenUtils.dp2px(25), DimenUtils.dp2px(25), DimenUtils.dp2px(25), paint);
+        new Canvas(result).drawCircle(radius,radius, radius, paint);
         return result;
     }
 }

@@ -62,6 +62,14 @@
         <activity android:name=".ui.activity.UserInfoActivity"
             android:launchMode="singleTask"
             />
+
+        <activity android:name=".ui.activity.LikeCommodityActivity"
+            android:launchMode="singleTask"/>
+
+        <activity android:name=".ui.activity.AddTalkActvity"/>
+
+        <activity android:name=".ui.activity.MyTalkActivity"/>
+        <activity android:name=".ui.activity.AboutUsActivity"/>
     </application>
 
 </manifest>

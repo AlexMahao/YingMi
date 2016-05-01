@@ -10,10 +10,9 @@
         android:id="@+id/titlebar"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        app:centerText="广场"
+        app:centerText="我的说说"
         app:centerType="customMenu"
-        app:leftType="gone"
-        app:rightText="发表说说"
+        app:leftType="back"
         app:rightType="customMenu" />
 
     <android.support.v4.widget.SwipeRefreshLayout

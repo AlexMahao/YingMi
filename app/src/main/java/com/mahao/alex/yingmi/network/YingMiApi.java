@@ -5,6 +5,7 @@ import com.mahao.alex.yingmi.bean.AppVersion;
 import com.mahao.alex.yingmi.bean.Commodity;
 import com.mahao.alex.yingmi.bean.HttpResult;
 import com.mahao.alex.yingmi.bean.Production;
+import com.mahao.alex.yingmi.bean.Talk;
 import com.mahao.alex.yingmi.bean.Theme;
 
 import java.util.List;
@@ -109,4 +110,15 @@ public interface YingMiApi {
     Observable<HttpResult<Actor>> getActor(@Field("actorId") String actorId);
 
 
+    @FormUrlEncoded
+    @POST("getTalk")
+    Observable<HttpResult<List<Talk>>> getTalk(@Field("page") String page,@Field("pageSize") String pageSize);
+
+    @FormUrlEncoded
+    @POST("saveTalk")
+    Observable<HttpResult<String>> saveTalk(@Field("userId") String userId,@Field("talkTime") String talkTime,@Field("talkContent") String talkContent);
+
+    @FormUrlEncoded
+    @POST("getTalkByUserId")
+    Observable<HttpResult<List<Talk>>> getTalkByUserId(@Field("userId") String userId);
 }

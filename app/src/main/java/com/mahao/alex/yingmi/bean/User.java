@@ -15,6 +15,15 @@ public class User extends BmobUser {
 
     private String birthday;
 
+    private int userId;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public String getSex() {
         return sex;
@@ -47,7 +56,17 @@ public class User extends BmobUser {
         u.userIcon = user.getUserIcon();
         u.sex =user.getSex();
         u.birthday = user.getBirthday();
+        u.userId = user.getUserId();
         return u;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userIcon='" + userIcon + '\'' +
+                ", sex='" + sex + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", userId=" + userId +
+                '}';
+    }
 }

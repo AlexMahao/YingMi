@@ -1,0 +1,112 @@
+package com.mahao.alex.yingmi.bean;
+
+import cn.bmob.v3.BmobObject;
+
+/**
+ * 说说
+ * Created by Alex_MaHao on 2016/5/1.
+ */
+public class Talk  {
+    private int talkId;
+
+    private int userId;
+
+    private String userName;
+
+    private String userIcon;
+
+    private String talkTime;
+
+
+    private String talkContent;
+
+    private int clickCount;
+
+    private int goodCount;
+
+    private int commentCount;
+
+    private boolean isGood;
+
+
+    public int getTalkId() {
+        return talkId;
+    }
+
+    public void setTalkId(int talkId) {
+        this.talkId = talkId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getTalkTime() {
+        return talkTime;
+    }
+
+    public void setTalkTime(String talkTime) {
+        this.talkTime = talkTime;
+    }
+
+    public String getTalkContent() {
+        return talkContent;
+    }
+
+    public void setTalkContent(String talkContent) {
+        this.talkContent = talkContent;
+    }
+
+    public int getClickCount() {
+        return clickCount;
+    }
+
+    public void setClickCount(int clickCount) {
+        this.clickCount = clickCount;
+    }
+
+    public int getGoodCount() {
+        return goodCount;
+    }
+
+    public void setGoodCount(int goodCount) {
+        this.goodCount = goodCount;
+    }
+
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    public boolean isGood() {
+        return isGood;
+    }
+
+    public void setGood(boolean good) {
+        isGood = good;
+    }
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserIcon() {
+        return userIcon;
+    }
+
+    public void setUserIcon(String userIcon) {
+        this.userIcon = userIcon;
+    }
+}

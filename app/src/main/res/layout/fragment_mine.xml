@@ -62,7 +62,7 @@
                         android:textSize="@dimen/text_font_medium" />
 
                     <TextView
-                        android:id="@+id/actor_detial_top_year"
+                        android:id="@+id/mine_user_id_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -93,7 +93,8 @@
                         android:layout_marginLeft="5dp"
                         android:text="未命名"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/text_font_medium" />
+                        android:textSize="@dimen/text_font_medium"
+                        android:id="@+id/mine_user_name_tv" />
 
                 </LinearLayout>
 

@@ -4,6 +4,7 @@ import com.mahao.alex.yingmi.bean.Actor;
 import com.mahao.alex.yingmi.bean.AppVersion;
 import com.mahao.alex.yingmi.bean.Commodity;
 import com.mahao.alex.yingmi.bean.Production;
+import com.mahao.alex.yingmi.bean.Talk;
 import com.mahao.alex.yingmi.bean.Theme;
 
 import java.util.List;
@@ -276,6 +277,30 @@ public class RetrofitManager {
     public Observable<Actor> getActor(String actorId) {
         return mYingMiApi.getActor(actorId)
                 .map(new HttpResultFuc<Actor>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
+
+    public Observable<List<Talk>> getTalk(String page,String pageSize){
+        return mYingMiApi.getTalk(page,pageSize)
+                .map(new HttpResultFuc<List<Talk>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
+    public Observable<String> saveTalk(String userId,String talkTime,String talkContent){
+        return mYingMiApi.saveTalk(userId,talkTime,talkContent)
+                .map(new HttpResultFuc<String>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<List<Talk>> getTalkByUserId(String userId){
+        return mYingMiApi.getTalkByUserId(userId)
+                .map(new HttpResultFuc<List<Talk>>())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

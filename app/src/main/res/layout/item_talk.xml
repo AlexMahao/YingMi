@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/white"
+    android:paddingTop="20dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/home_pic_photo_logout"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/social_talk_icon_tv" />
+        
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+            android:text="用户名"
+            android:textSize="@dimen/text_font_small"
+            android:textColor="@color/text_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/social_talk_username_tv" />
+
+            <TextView
+                android:text="2016-5-3 10:21:30"
+                android:textSize="@dimen/text_font_micro"
+                android:textColor="@android:color/holo_red_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/social_talk_time_tv" />
+        </LinearLayout>
+    </LinearLayout>
+    
+    
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="我的啊克拉的角色卢卡斯就得啦卡即使离开"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/text_font_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/social_talk_content_tv" />
+
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:showDividers="end|beginning|middle"
+        android:divider="@drawable/shape_divider"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:text="0"
+            android:drawablePadding="10dp"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_font_micro"
+            android:drawableLeft="@mipmap/social_icon_eye"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/social_talk_click_tv" />
+
+        <TextView
+            android:text="0"
+            android:drawablePadding="10dp"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_font_micro"
+            android:drawableLeft="@mipmap/social_icon_good"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/social_talk_good_tv" />
+
+        <TextView
+            android:text="0"
+            android:drawablePadding="10dp"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_font_micro"
+            android:drawableLeft="@mipmap/social_icon_comments"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/social_talk_comment_tv" />
+
+    </LinearLayout>
+
+    <include layout="@layout/layout_underline"/>
+</LinearLayout>

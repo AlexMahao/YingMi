@@ -6,16 +6,19 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alex.bean.CommodityBean;
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseActivity;
 import com.mahao.alex.yingmi.base.Constant;
 import com.mahao.alex.yingmi.bean.Commodity;
 import com.mahao.alex.yingmi.bean.Theme;
+import com.mahao.alex.yingmi.db.CommodityRepository;
 import com.mahao.alex.yingmi.network.ProgressSubscriber;
 import com.mahao.alex.yingmi.network.RetrofitManager;
 import com.mahao.alex.yingmi.ui.adapter.CommodityAdapter;
 import com.mahao.alex.yingmi.utils.BitmapUtils;
 import com.mahao.alex.yingmi.utils.RecycleUtils;
+import com.mahao.alex.yingmi.utils.Tt;
 import com.mahao.alex.yingmi.widget.BuyDialog;
 import com.mahao.alex.yingmi.widget.MyScrollView;
 import com.mahao.alex.yingmi.widget.TitleBar;
@@ -70,6 +73,11 @@ public class CommodityDetailActivity extends BaseActivity {
     MyScrollView scrollView;
 
 
+    @Bind(R.id.commodity_detail_like)
+    ImageView mLikeImg;
+
+    private CommodityBean commodityBean;
+
 
     private CommodityAdapter mCommodityAdapter;
 
@@ -80,8 +88,21 @@ public class CommodityDetailActivity extends BaseActivity {
 
         commodityId = getIntent().getStringExtra(Constant.COMMODITY_ID);
 
-        Log.i("info",commodityId);
+        Log.i("info", commodityId);
         requestTheme();
+
+
+        initLove();
+    }
+
+    private void initLove() {
+      commodityBean = CommodityRepository.getCommodityForId(this,commodityId);
+
+        if (commodityBean == null) {
+            mLikeImg.setImageResource(R.mipmap.detail_icon_like_normal);
+        } else {
+            mLikeImg.setImageResource(R.mipmap.detail_icon_like_highlight);
+        }
 
     }
 
@@ -94,8 +115,8 @@ public class CommodityDetailActivity extends BaseActivity {
                         for (int i = 0; i < mTheme.getList().size(); i++) {
 
                             if (mTheme.getList().get(i).getCommodityId().equals(commodityId)) {
-                                    mCommodity =mTheme.getList().get(i);
-                                    mTheme.getList().remove(i);
+                                mCommodity = mTheme.getList().get(i);
+                                mTheme.getList().remove(i);
                                 break;
                             }
                         }
@@ -111,17 +132,17 @@ public class CommodityDetailActivity extends BaseActivity {
         scrollView.setScrollChangeListener(new MyScrollView.ScrollChangeListener() {
             @Override
             public void scrollY(int y) {
-                if(y<=1000&&y>=0){
-                    titleBar.setAlpha(y/1000f);
+                if (y <= 1000 && y >= 0) {
+                    titleBar.setAlpha(y / 1000f);
                 }
             }
         });
 
-        BitmapUtils.loadImage(mTopImg,mCommodity.getCommodityImagePath());
+        BitmapUtils.loadImage(mTopImg, mCommodity.getCommodityImagePath());
 
 
         //同款
-        mCommodityAdapter = new CommodityAdapter(mTheme.getList(),this);
+        mCommodityAdapter = new CommodityAdapter(mTheme.getList(), this);
         RecycleUtils.initHorizontalRecyle(mRecomRecycle);
 
         mRecomRecycle.setAdapter(mCommodityAdapter);
@@ -130,20 +151,20 @@ public class CommodityDetailActivity extends BaseActivity {
         mCnameTv.setText(mCommodity.getCommodityName());
 
         String text = "";
-        if(mCommodity.getCurrency().equals("人民币")){
-            text=text+"￥";
-        }else{
-            text = text+"$";
+        if (mCommodity.getCurrency().equals("人民币")) {
+            text = text + "￥";
+        } else {
+            text = text + "$";
         }
-        mPriceTv.setText(text+" "+mCommodity.getPrice());
+        mPriceTv.setText(text + " " + mCommodity.getPrice());
 
         //
-        mNameTv.setText("品牌："+mCommodity.getName());
+        mNameTv.setText("品牌：" + mCommodity.getName());
 
         //
-        mDescTv.setText("物品描述："+mCommodity.getCommodityDesc());
+        mDescTv.setText("物品描述：" + mCommodity.getCommodityDesc());
 
-        BitmapUtils.loadImage(mThemeImg,mCommodity.getBigImagePath());
+        BitmapUtils.loadImage(mThemeImg, mCommodity.getBigImagePath());
 
         mMovieTv.setText(mCommodity.getProductionId());
 
@@ -152,18 +173,18 @@ public class CommodityDetailActivity extends BaseActivity {
 
 
     @OnClick(R.id.commodity_detail_movie_rl)
-    public void toMovie(){
-        Intent intent = new Intent(this,ProducitonDetailActivity.class);
-        intent.putExtra(Constant.PRODUCTION_ID,mCommodity.getProductionId());
-        intent.putExtra(Constant.PRODUCTION_NAME,mCommodity.getProductionId());
+    public void toMovie() {
+        Intent intent = new Intent(this, ProducitonDetailActivity.class);
+        intent.putExtra(Constant.PRODUCTION_ID, mCommodity.getProductionId());
+        intent.putExtra(Constant.PRODUCTION_NAME, mCommodity.getProductionId());
         startActivity(intent);
     }
 
     @OnClick(R.id.commodity_detail_actor_rl)
-    public void toActor(){
-        Intent intent = new Intent(this,ProducitonDetailActivity.class);
-        intent.putExtra(Constant.ACTOR_ID,mCommodity.getActorId());
-        intent.putExtra(Constant.ACTOR_NAME,mCommodity.getActorId());
+    public void toActor() {
+        Intent intent = new Intent(this, ProducitonDetailActivity.class);
+        intent.putExtra(Constant.ACTOR_ID, mCommodity.getActorId());
+        intent.putExtra(Constant.ACTOR_NAME, mCommodity.getActorId());
         startActivity(intent);
     }
 
@@ -174,24 +195,39 @@ public class CommodityDetailActivity extends BaseActivity {
 
 
     @OnClick(R.id.commodity_detail_comment)
-    public void comment(){
+    public void comment() {
         //评论
     }
 
     @OnClick(R.id.commodity_detail_like)
-    public void myLike(){
+    public void myLike() {
         //喜欢
+        if (commodityBean == null){
+            commodityBean = new CommodityBean();
+            commodityBean.setCommodityId(mCommodity.getCommodityId());
+            commodityBean.setCommodityImagePath(mCommodity.getCommodityImagePath());
+            commodityBean.setCommodityName(mCommodity.getCommodityName());
+            CommodityRepository.insertOrUpdate(getApplicationContext(),commodityBean);
+            Tt.showLong("已收藏");
+            mLikeImg.setImageResource(R.mipmap.detail_icon_like_highlight);
+        }else{
+            CommodityRepository.deleteCommodityWithId(getApplicationContext(),mCommodity.getCommodityId());
+            Tt.showLong("取消收藏");
+            mLikeImg.setImageResource(R.mipmap.detail_icon_like_normal);
+            commodityBean = null;
+        }
+
     }
 
     @OnClick(R.id.commodity_detail_buy)
-    public void buy(){
+    public void buy() {
         //现在购买
         BuyDialog dialog = new BuyDialog(this, new BuyDialog.OnBuyDialogListener() {
             @Override
             public void go() {
-                Intent intent = new Intent(CommodityDetailActivity.this,WebActivity.class);
-                intent.putExtra(Constant.WEB_LINK,mCommodity.getLinkPath());
-                intent.putExtra(Constant.WEB_TITLE,mCommodity.getCommodityName());
+                Intent intent = new Intent(CommodityDetailActivity.this, WebActivity.class);
+                intent.putExtra(Constant.WEB_LINK, mCommodity.getLinkPath());
+                intent.putExtra(Constant.WEB_TITLE, mCommodity.getCommodityName());
                 startActivity(intent);
             }
         });
@@ -200,11 +236,11 @@ public class CommodityDetailActivity extends BaseActivity {
     }
 
     @OnClick(R.id.commodity_detail_top_img)
-    public void showImg(){
-        Intent intent = new Intent(this,ShowImageActivity.class);
+    public void showImg() {
+        Intent intent = new Intent(this, ShowImageActivity.class);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(mCommodity.getCommodityImagePath());
-        intent.putStringArrayListExtra(Constant.SHOW_IMG_URL,arrayList);
+        intent.putStringArrayListExtra(Constant.SHOW_IMG_URL, arrayList);
         startActivity(intent);
     }
 

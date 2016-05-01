@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/bg_blue"
+    android:layout_height="match_parent">
+
+    <com.mahao.alex.yingmi.widget.TitleBar
+        app:leftType="back"
+        app:centerText="发表说说"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <EditText
+        android:id="@+id/talk_add_content_et"
+        android:padding="5dp"
+        android:maxLines="10"
+        android:background="@drawable/shape_talk_et"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+
+    <Button
+        android:id="@+id/talk_add_submit_btn"
+        android:layout_marginTop="30dp"
+        android:text="发表"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_font_medium"
+        android:background="@drawable/btn"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
