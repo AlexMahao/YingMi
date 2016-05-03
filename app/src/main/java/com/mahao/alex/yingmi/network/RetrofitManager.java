@@ -2,6 +2,7 @@ package com.mahao.alex.yingmi.network;
 
 import com.mahao.alex.yingmi.bean.Actor;
 import com.mahao.alex.yingmi.bean.AppVersion;
+import com.mahao.alex.yingmi.bean.Comment;
 import com.mahao.alex.yingmi.bean.Commodity;
 import com.mahao.alex.yingmi.bean.Production;
 import com.mahao.alex.yingmi.bean.Talk;
@@ -43,7 +44,6 @@ public class RetrofitManager {
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(okHttpClient)
-
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
@@ -304,4 +304,39 @@ public class RetrofitManager {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+    /**
+     * 添加评论的点击次数
+     * @param talkId
+     * @return
+     */
+    public Observable<String> addTalkClickCount(String talkId){
+        return  mYingMiApi.addTalkClickCount(talkId)
+                .map(new HttpResultFuc<String>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
+    /**
+     * 添加评论
+     */
+    public Observable<String> addComment(String userId,String time,String commentContent,String type,
+                                         String goldId){
+        return  mYingMiApi.addComment(userId,time,commentContent,type,goldId)
+                .map(new HttpResultFuc<String>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    /**
+     * 获取评论
+     */
+    public Observable<List<Comment>> getComment( String type, String goalId){
+        return  mYingMiApi.getComment(type,goalId)
+                .map(new HttpResultFuc<List<Comment>>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
 }

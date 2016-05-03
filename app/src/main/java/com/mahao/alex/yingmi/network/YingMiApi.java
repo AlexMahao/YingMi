@@ -2,6 +2,7 @@ package com.mahao.alex.yingmi.network;
 
 import com.mahao.alex.yingmi.bean.Actor;
 import com.mahao.alex.yingmi.bean.AppVersion;
+import com.mahao.alex.yingmi.bean.Comment;
 import com.mahao.alex.yingmi.bean.Commodity;
 import com.mahao.alex.yingmi.bean.HttpResult;
 import com.mahao.alex.yingmi.bean.Production;
@@ -27,6 +28,7 @@ public interface YingMiApi {
 
     /**
      * 获取热门电影
+     *
      * @return
      */
     @POST("getHotProduction")
@@ -49,11 +51,11 @@ public interface YingMiApi {
 
     @FormUrlEncoded
     @POST("getHotTheme")
-    Observable<HttpResult<List<Theme>>> getHotTheme(@Field("page") String page,@Field("pageSize") String pageSize);
+    Observable<HttpResult<List<Theme>>> getHotTheme(@Field("page") String page, @Field("pageSize") String pageSize);
 
     @FormUrlEncoded
     @POST("getHotThemeCommodity")
-    Observable<HttpResult<List<Commodity>>> getHotCommodityList(@Field("page") String page,@Field("pageSize") String pageSize);
+    Observable<HttpResult<List<Commodity>>> getHotCommodityList(@Field("page") String page, @Field("pageSize") String pageSize);
 
 
     @POST("getProductionByType")
@@ -65,8 +67,8 @@ public interface YingMiApi {
     @POST("getActorByType")
     @FormUrlEncoded
     Observable<HttpResult<List<Actor>>> getActorByType(@Field("homeTown") String homeTown,
-                                                                 @Field("page") String page,
-                                                                 @Field("pageSize") String pageSize);
+                                                       @Field("page") String page,
+                                                       @Field("pageSize") String pageSize);
 
     @FormUrlEncoded
     @POST("getThemeByProductionId")
@@ -112,13 +114,30 @@ public interface YingMiApi {
 
     @FormUrlEncoded
     @POST("getTalk")
-    Observable<HttpResult<List<Talk>>> getTalk(@Field("page") String page,@Field("pageSize") String pageSize);
+    Observable<HttpResult<List<Talk>>> getTalk(@Field("page") String page, @Field("pageSize") String pageSize);
 
     @FormUrlEncoded
     @POST("saveTalk")
-    Observable<HttpResult<String>> saveTalk(@Field("userId") String userId,@Field("talkTime") String talkTime,@Field("talkContent") String talkContent);
+    Observable<HttpResult<String>> saveTalk(@Field("userId") String userId, @Field("talkTime") String talkTime, @Field("talkContent") String talkContent);
 
     @FormUrlEncoded
     @POST("getTalkByUserId")
     Observable<HttpResult<List<Talk>>> getTalkByUserId(@Field("userId") String userId);
+
+
+    @FormUrlEncoded
+    @POST("addTalkClickCount")
+    Observable<HttpResult<String>> addTalkClickCount(@Field("talkId") String talkId);
+
+
+    @FormUrlEncoded
+    @POST("addComment")
+    Observable<HttpResult<String>> addComment(@Field("userId") String userId, @Field("time") String time, @Field("commentContent") String commentContent
+            , @Field("type") String type, @Field("goldId") String goldId);
+
+
+    @FormUrlEncoded
+    @POST("getComment")
+    Observable<HttpResult<List<Comment>>> getComment(@Field("type") String type,@Field("goldId") String goalId);
+
 }

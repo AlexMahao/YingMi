@@ -7,9 +7,10 @@ import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.App;
 import com.mahao.alex.yingmi.base.BaseFragment;
 import com.mahao.alex.yingmi.bean.Talk;
-import com.mahao.alex.yingmi.network.ProgressSubscriber;
+import com.mahao.alex.yingmi.network.ResultSubscriber;
 import com.mahao.alex.yingmi.network.RetrofitManager;
 import com.mahao.alex.yingmi.ui.activity.AddTalkActvity;
+import com.mahao.alex.yingmi.ui.adapter.TalkAdapter;
 import com.mahao.alex.yingmi.utils.RecycleUtils;
 import com.mahao.alex.yingmi.utils.Tt;
 import com.mahao.alex.yingmi.widget.TitleBar;
@@ -68,7 +69,14 @@ public class SocialFragment extends BaseFragment {
             @Override
             public void onRefresh() {
 
-                requestTalk();
+                refreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //延迟加载，显示刷新进度条
+                        requestTalk();
+
+                    }
+                },2000);
 
             }
         });
@@ -84,7 +92,7 @@ public class SocialFragment extends BaseFragment {
     private void requestTalk() {
         RetrofitManager.getInstance()
                 .getTalk(page+"",pageSize+"")
-                .subscribe(new ProgressSubscriber<List<Talk>>() {
+                .subscribe(new ResultSubscriber<List<Talk>>() {
                     @Override
                     public void onNext(List<Talk> talks) {
                         mAdapter.refresh(talks);

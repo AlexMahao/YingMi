@@ -70,6 +70,8 @@
 
         <activity android:name=".ui.activity.MyTalkActivity"/>
         <activity android:name=".ui.activity.AboutUsActivity"/>
+
+        <activity android:name=".ui.activity.CommentActivity"/>
     </application>
 
 </manifest>
