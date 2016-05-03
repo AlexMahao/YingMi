@@ -95,6 +95,7 @@ public class SocialFragment extends BaseFragment {
                 .subscribe(new ResultSubscriber<List<Talk>>() {
                     @Override
                     public void onNext(List<Talk> talks) {
+
                         mAdapter.refresh(talks);
                         refreshLayout.setRefreshing(false);
                     }

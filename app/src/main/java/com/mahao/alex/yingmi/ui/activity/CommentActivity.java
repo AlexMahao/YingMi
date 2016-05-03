@@ -175,6 +175,7 @@ public class CommentActivity extends BaseActivity {
                     @Override
                     public void onNext(List<Comment> comments) {
                         mCommentAdapter.refresh(comments);
+                        mCommentAddEt.setText("");
                     }
                 });
 

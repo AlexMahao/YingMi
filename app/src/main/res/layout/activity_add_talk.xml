@@ -16,6 +16,7 @@
         android:id="@+id/talk_add_content_et"
         android:padding="5dp"
         android:maxLines="10"
+        android:gravity="top"
         android:background="@drawable/shape_talk_et"
         android:layout_margin="10dp"
         android:layout_width="match_parent"

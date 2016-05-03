@@ -103,13 +103,53 @@
 
 
                 <TextView
+                    android:id="@+id/comment_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="暂无评论"
+                    android:visibility="gone"
                     android:textColor="@color/text_black"
                     android:textSize="@dimen/text_font_small" />
 
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/comment_recycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#fff" />
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/gray_menu"
+                    android:padding="5dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <EditText
+                        android:id="@+id/comment_add_et"
+                        android:hint="请输入评论内容"
+                        android:textColor="@color/text_black"
+                        android:layout_weight="8"
+                        android:paddingLeft="10dp"
+                        android:background="@drawable/shape_talk_et"
+                        android:textSize="@dimen/text_font_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <Button
+                        android:id="@+id/comment_add_btn"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/shape_talk_et"
+                        android:text="发表"
+
+                        android:textColor="@color/text_black"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     <!--</ScrollView>

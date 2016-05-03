@@ -13,14 +13,15 @@ import com.squareup.picasso.Transformation;
  */
 public class CircleTransformation implements Transformation {
 
-    private static  int radius = DimenUtils.dp2px(25) ;
+    private  int radius ;
 
     public CircleTransformation(){
-
+        radius = DimenUtils.dp2px(25) ;
     }
 
     public CircleTransformation(int radius){
-       // radius = DimenUtils.dp2px(radius);
+        /*//radius = DimenUtils.dp2px(radius);
+        radius = DimenUtils.dp2px(25) ;*/
     }
 
     @Override
@@ -48,7 +49,8 @@ public class CircleTransformation implements Transformation {
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.FILL);
         Bitmap result = Bitmap.createBitmap(bmp.getWidth(), bmp.getHeight(), Bitmap.Config.ARGB_8888);
-        new Canvas(result).drawCircle(radius,radius, radius, paint);
+
+        new Canvas(result).drawCircle(50,50, 50, paint);
         return result;
     }
 }

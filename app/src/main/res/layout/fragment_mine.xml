@@ -23,8 +23,9 @@
 
             <ImageView
                 android:id="@+id/mine_user_icon"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:scaleType="fitXY"
+                android:layout_height="50dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="50dp" />
 

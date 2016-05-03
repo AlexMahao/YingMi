@@ -83,10 +83,6 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
     @Override
     protected void afterCreate() {
 
-        dialog = new CustomDialog(getActivity());
-
-        dialog.show();
-
         mBottomTitleBar.setVisibility(View.GONE);
 
         mBottomTitleBar.setOnClickListener(new View.OnClickListener() {
