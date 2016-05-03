@@ -1,39 +1,11 @@
 package com.mahao.alex.yingmi.ui.activity;
 
-import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.alex.bean.CommodityBean;
-import com.mahao.alex.yingmi.R;
-import com.mahao.alex.yingmi.base.BaseActivity;
-import com.mahao.alex.yingmi.base.Constant;
-import com.mahao.alex.yingmi.bean.Commodity;
-import com.mahao.alex.yingmi.bean.Theme;
-import com.mahao.alex.yingmi.db.CommodityRepository;
-import com.mahao.alex.yingmi.network.ProgressSubscriber;
-import com.mahao.alex.yingmi.network.RetrofitManager;
-import com.mahao.alex.yingmi.ui.adapter.CommodityAdapter;
-import com.mahao.alex.yingmi.utils.BitmapUtils;
-import com.mahao.alex.yingmi.utils.RecycleUtils;
-import com.mahao.alex.yingmi.utils.Tt;
-import com.mahao.alex.yingmi.widget.BuyDialog;
-import com.mahao.alex.yingmi.widget.MyScrollView;
-import com.mahao.alex.yingmi.widget.TitleBar;
-
-import java.util.ArrayList;
-
-import butterknife.Bind;
-import butterknife.OnClick;
-
 /**
  * Created by mdw on 2016/4/28.
  */
-public class CommodityDetailActivity extends BaseActivity {
+public class CommodityDetailActivity {
 
-    private String commodityId;
+   /* private String commodityId;
 
     private Theme mTheme;
 
@@ -242,6 +214,6 @@ public class CommodityDetailActivity extends BaseActivity {
         arrayList.add(mCommodity.getCommodityImagePath());
         intent.putStringArrayListExtra(Constant.SHOW_IMG_URL, arrayList);
         startActivity(intent);
-    }
+    }*/
 
 }

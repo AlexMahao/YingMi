@@ -78,6 +78,7 @@
             android:id="@+id/social_talk_click_tv" />
 
         <TextView
+            android:visibility="gone"
             android:text="0"
             android:drawablePadding="10dp"
             android:textColor="@color/text_gray"

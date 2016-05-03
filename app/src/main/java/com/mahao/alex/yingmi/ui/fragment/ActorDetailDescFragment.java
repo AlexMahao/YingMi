@@ -186,12 +186,14 @@ public class ActorDetailDescFragment extends BaseFragment {
 
         RetrofitManager.getInstance()
                 .addComment(App.user.getUserId() + "", time, comment, Constant.COMMENT_TYPE_ACTOR, actor.getActorId() + "")
+
                 .flatMap(new Func1<String, Observable<List<Comment>>>() {
                     @Override
                     public Observable<List<Comment>> call(String s) {
                         return RetrofitManager.getInstance().getComment(Constant.COMMENT_TYPE_ACTOR, actor.getActorId() + "");
                     }
                 })
+
                 .subscribe(new ProgressSubscriber<List<Comment>>() {
                     @Override
                     public void onNext(List<Comment> comments) {

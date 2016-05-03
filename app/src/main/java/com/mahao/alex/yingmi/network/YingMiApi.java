@@ -140,4 +140,7 @@ public interface YingMiApi {
     @POST("getComment")
     Observable<HttpResult<List<Comment>>> getComment(@Field("type") String type,@Field("goldId") String goalId);
 
+    @FormUrlEncoded
+    @POST("addCommentCount")
+    Observable<HttpResult<String>> addCommentCount(@Field("talkId") String talkId);
 }

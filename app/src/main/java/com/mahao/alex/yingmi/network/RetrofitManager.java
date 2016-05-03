@@ -338,5 +338,17 @@ public class RetrofitManager {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+    /**
+     * 添加评论的评论次数
+     * @param talkId
+     * @return
+     */
+    public Observable<String> addTalkCommentCount(String talkId){
+        return  mYingMiApi.addCommentCount(talkId)
+                .map(new HttpResultFuc<String>())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
 
 }

@@ -165,6 +165,12 @@ public class CommentActivity extends BaseActivity {
 
         RetrofitManager.getInstance()
                 .addComment(App.user.getUserId() + "", time, comment, Constant.COMMENT_TYPE_TALK, talk.getTalkId() + "")
+                .flatMap(new Func1<String, Observable<String>>() {
+                    @Override
+                    public Observable<String> call(String s) {
+                        return RetrofitManager.getInstance().addTalkCommentCount(talk.getTalkId()+"");
+                    }
+                })
                 .flatMap(new Func1<String, Observable<List<Comment>>>() {
                     @Override
                     public Observable<List<Comment>> call(String s) {
