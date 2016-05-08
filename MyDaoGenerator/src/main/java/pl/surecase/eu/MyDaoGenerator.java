@@ -17,6 +17,7 @@ public class MyDaoGenerator {
 
     }
 
+
     private static void initCommodityBeam(Schema schema) {
         Entity userBean = schema.addEntity("CommodityBean");// 表名
         userBean.addIdProperty();
