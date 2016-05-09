@@ -85,9 +85,14 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
 
         mBottomTitleBar.setVisibility(View.GONE);
 
-        mBottomTitleBar.setOnClickListener(new View.OnClickListener() {
+        mBottomTitleBar.setTitleBarClickListener(new TitleBar.TitleBarClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onLeftClick() {
+
+            }
+
+            @Override
+            public void onCenterClick() {
                 scrollView.scrollToTop();
             }
         });

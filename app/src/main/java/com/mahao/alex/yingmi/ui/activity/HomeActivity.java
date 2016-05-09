@@ -1,7 +1,9 @@
 package com.mahao.alex.yingmi.ui.activity;
 
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseActivity;
@@ -26,6 +28,11 @@ public class HomeActivity extends BaseActivity {
     RadioGroup rg_mian_menu;
 
 
+    /**
+     * 防止误触退出
+     */
+    private long mExitTime;
+
 
     @Override
     public void afterCreate() {
@@ -46,6 +53,20 @@ public class HomeActivity extends BaseActivity {
     public int getLayoutId() {
 
         return R.layout.activity_home;
+    }
 
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                Object mHelperUtils;
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                mExitTime = System.currentTimeMillis();
+
+            } else {
+                finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

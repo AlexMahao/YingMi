@@ -1,11 +1,13 @@
 package com.mahao.alex.yingmi.base;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.mahao.alex.yingmi.utils.AppManager;
+import com.mahao.alex.yingmi.utils.StatusBarUtil;
 
 import butterknife.ButterKnife;
 
@@ -20,6 +22,8 @@ public abstract class BaseActivity  extends AppCompatActivity{
         setContentView(getLayoutId());
 
         AppManager.getAppManager().addActivity(this);
+
+        StatusBarUtil.setColor(this, Color.parseColor("#0e0e0e"));
 
         ButterKnife.bind(this);
 
