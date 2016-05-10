@@ -1,12 +1,13 @@
 package com.mahao.alex.yingmi.ui.fragment;
 
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 
+import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
+import com.aspsine.swipetoloadlayout.OnRefreshListener;
+import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.mahao.alex.yingmi.R;
 import com.mahao.alex.yingmi.base.BaseFragment;
 import com.mahao.alex.yingmi.bean.Production;
@@ -14,7 +15,6 @@ import com.mahao.alex.yingmi.network.ProgressSubscriber;
 import com.mahao.alex.yingmi.network.ResultSubscriber;
 import com.mahao.alex.yingmi.network.RetrofitManager;
 import com.mahao.alex.yingmi.ui.adapter.CategoryProductionTypeAdapter;
-import com.mahao.alex.yingmi.ui.recycle.RecycleRefreshController;
 import com.mahao.alex.yingmi.utils.Tt;
 
 import java.util.ArrayList;
@@ -25,7 +25,9 @@ import butterknife.Bind;
 /**
  * Created by mdw on 2016/4/26.
  */
-public class CategoryProductionFragment extends BaseFragment {
+public class CategoryProductionFragment extends BaseFragment implements OnRefreshListener, OnLoadMoreListener {
+
+    private boolean isLoadMore = true;
 
     public static CategoryProductionFragment newInstance(String typeName) {
         CategoryProductionFragment fragment = new CategoryProductionFragment();
@@ -36,11 +38,11 @@ public class CategoryProductionFragment extends BaseFragment {
     }
 
 
-    @Bind(R.id.category_production_child_recycle)
+    @Bind(R.id.swipe_target)
     RecyclerView mRecycleView;
 
     @Bind(R.id.category_production_child_refresh)
-    SwipeRefreshLayout refreshLayout;
+    SwipeToLoadLayout refreshLayout;
 
     private String typeName;
 
@@ -51,10 +53,6 @@ public class CategoryProductionFragment extends BaseFragment {
     private int page = 1;
 
     private int pageSize = 10;
-
-    //是否正在请求数据
-    private boolean isNet = true;
-
 
     @Override
     protected void afterCreate() {
@@ -68,59 +66,41 @@ public class CategoryProductionFragment extends BaseFragment {
         mRecycleView.setItemAnimator(new DefaultItemAnimator());
         requestProduction();
 
-
-        mRecycleView.setOnScrollListener(new RecycleRefreshController() {
-            @Override
-            public void loadMoreData() {
-                if (mProductions.size() < pageSize || isNet) {
-                    //没有更多数据了
-                } else {
-                    addData();
-                }
-            }
-        });
+        refreshLayout.setOnRefreshListener(this);
+        refreshLayout.setOnLoadMoreListener(this);
 
 
-        refreshLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light);
 
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                if (!isNet) {
-                    requestProduction();
-                } else {
-                    Tt.showShort("不要心急呦~~~");
-                    refreshLayout.setRefreshing(false);
-                }
-            }
-        });
+
     }
 
     private void addData() {
-        Log.i("info", "add-------data");
-        isNet = true;
+
         RetrofitManager.getInstance()
                 .getProductionByType(typeName, page + "", pageSize + "")
                 .subscribe(new ProgressSubscriber<List<Production>>() {
                     @Override
                     public void onNext(List<Production> productions) {
-                        Log.i("info",productions.toString());
+
                         mAdapter.addData(productions);
-                        isNet = false;
+
+                        if (productions.size()<pageSize){
+                            isLoadMore = false;
+                        }
                         page++;
+                        refreshLayout.setLoadingMore(false);
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         super.onError(e);
-
-                        isNet = false;
+                        refreshLayout.setLoadingMore(false);
                     }
                 });
     }
 
     private void requestProduction() {
-        isNet = true;
+
         page = 1;
         RetrofitManager.getInstance()
                 .getProductionByType(typeName, page + "", pageSize + "")
@@ -128,15 +108,14 @@ public class CategoryProductionFragment extends BaseFragment {
                     @Override
                     public void onNext(List<Production> productions) {
                         mAdapter.refresh(productions);
-                        isNet = false;
                         page++;
                         refreshLayout.setRefreshing(false);
+                        isLoadMore = true;
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         super.onError(e);
-                        isNet = false;
                         refreshLayout.setRefreshing(false);
                     }
                 });
@@ -145,5 +124,23 @@ public class CategoryProductionFragment extends BaseFragment {
     @Override
     public int getLayoutId() {
         return R.layout.fragment_category_prodcution;
+    }
+
+    @Override
+    public void onRefresh() {
+        requestProduction();
+    }
+
+    @Override
+    public void onLoadMore() {
+
+        if(!isLoadMore){
+            //无法加载更多，数据已经结束了。
+            refreshLayout.setLoadingMore(false);
+            Tt.showShort("到底啦");
+            return;
+        }
+
+        addData();
     }
 }
