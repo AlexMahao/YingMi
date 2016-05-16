@@ -11,6 +11,15 @@ public class AppVersion {
 
     private String versionDesc;
 
+    private String filePath;
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
 
     public String getVersionCode() {
         return versionCode;

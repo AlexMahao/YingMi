@@ -16,6 +16,7 @@ import com.mahao.alex.yingmi.ui.activity.MyTalkActivity;
 import com.mahao.alex.yingmi.ui.activity.UserInfoActivity;
 import com.mahao.alex.yingmi.utils.CircleTransformation;
 import com.mahao.alex.yingmi.utils.Tt;
+import com.mahao.alex.yingmi.utils.UpdataManager;
 import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
@@ -81,6 +82,8 @@ public class MineFragment extends BaseFragment {
     }
 
 
+
+
     @OnClick(R.id.mine_login_status)
     public void login() {
         toLogin();
@@ -129,5 +132,11 @@ public class MineFragment extends BaseFragment {
         } else {
             intent2Activity(UserInfoActivity.class);
         }
+    }
+
+
+    @OnClick(R.id.mine_updata_app)
+    public void updateApp(){
+        new UpdataManager().requestVer();
     }
 }

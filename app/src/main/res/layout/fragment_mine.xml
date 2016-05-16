@@ -207,6 +207,32 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/mine_updata_app"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="#fff"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="检查更新"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/text_font_medium" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:src="@mipmap/mine_more" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
             android:id="@+id/mine_clear_cache"
             android:layout_width="match_parent"
             android:layout_height="50dp"

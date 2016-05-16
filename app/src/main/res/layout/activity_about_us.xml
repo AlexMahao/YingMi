@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <com.mahao.alex.yingmi.widget.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:centerText="关于影觅"
+        app:centerType="customMenu"
+        app:leftType="back"
+        app:rightType="customMenu" />
+    <!--
+
+        <Button
+            android:text="分享"
+            android:id="@+id/share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:text="Oauth"
+            android:id="@+id/oauth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    -->
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:elevation="10dp"
+        android:outlineProvider="bounds"
+        android:src="@mipmap/app_icon" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="发现影觅，探寻美好"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/text_font_medium" />
+
+    <TextView
+        android:id="@+id/about_us_app_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="版本号v1.0.1"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/text_font_medium" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+
+        <View
+            android:layout_centerInParent="true"
+            android:background="@color/gray_border"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            />
+
+        <TextView
+            android:background="#fff"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/text_gray"
+            android:text="喜欢就把他推荐给好友吧！"
+            android:textSize="@dimen/text_font_small"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/share_weixin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:src="@drawable/umeng_socialize_wechat" />
+
+        <View
+            android:background="@color/gray_border"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:id="@+id/share_weixin_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:src="@drawable/umeng_socialize_wxcircle" />
+
+    </LinearLayout>
+
+</LinearLayout>

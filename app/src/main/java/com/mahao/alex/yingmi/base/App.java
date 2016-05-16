@@ -8,6 +8,7 @@ import com.alex.dao.DaoMaster;
 import com.alex.dao.DaoSession;
 import com.mahao.alex.yingmi.bean.User;
 import com.mahao.alex.yingmi.utils.Tt;
+import com.umeng.socialize.PlatformConfig;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobInstallation;
@@ -36,6 +37,8 @@ public class App  extends Application{
         //toast 初始化
         Tt.init();
 
+
+        PlatformConfig.setWeixin("wx737fc1974ed101e9", "66e100838fa81ccc0731f7e00c1b9dec");
 
 
         Bmob.initialize(this, "3afa610dc60f5bdc86f853992a3cdc65");
