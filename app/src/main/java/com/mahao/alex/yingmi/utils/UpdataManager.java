@@ -67,7 +67,7 @@ public class UpdataManager {
 					@Override
 					public void onNext(AppVersion o) {
 						appVersion = o;
-						String version = o.getVersionCode();
+						String version = o.getVersionName();
 						String oldVersion = getAppVersionName(App.getContext());
 						if(Integer.parseInt(version.replace(".",""))>
 								Integer.parseInt(oldVersion.replace(".",""))){

@@ -12,12 +12,10 @@ import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mahao.alex.yingmi.R;
@@ -31,7 +29,6 @@ import com.mahao.alex.yingmi.utils.Tt;
 import com.mahao.alex.yingmi.widget.TitleBar;
 import com.squareup.picasso.Picasso;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -41,7 +38,6 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
@@ -396,7 +392,7 @@ public class UserInfoActivity extends BaseActivity implements DatePickerDialog.O
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
         mYear = year;
-        mMonth = monthOfYear;
+        mMonth = monthOfYear+1;
         mDay = dayOfMonth;
 
         mUser.setBirthday(mYear + "-" + mMonth + "-" + mDay);

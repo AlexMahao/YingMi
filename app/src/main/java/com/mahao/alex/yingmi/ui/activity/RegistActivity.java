@@ -13,10 +13,15 @@ import com.mahao.alex.yingmi.utils.StringUtil;
 import com.mahao.alex.yingmi.utils.TimeCount;
 import com.mahao.alex.yingmi.utils.Tt;
 
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.OnClick;
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobSMS;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.RequestSMSCodeListener;
 import cn.bmob.v3.listener.SaveListener;
 
@@ -34,6 +39,8 @@ public class RegistActivity extends BaseActivity{
 
     @Bind(R.id.regist_authcode_edit)
     EditText mAuthCodeEt;
+
+    private int userId;
 
     private String phone ,authCode,password ;
 
@@ -90,23 +97,40 @@ public class RegistActivity extends BaseActivity{
             return;
         }
 
-        final User user = new User();
-        user.setMobilePhoneNumber(phone);
-        user.setPassword(password);
-        user.signOrLogin(this, authCode, new SaveListener() {
+        BmobQuery<User> query = new BmobQuery<User>();
+        query.order("-userId");
+        query.setLimit(1);
+        query.findObjects(getApplicationContext(), new FindListener<User>() {
             @Override
-            public void onSuccess() {
-                Tt.showShort("注册成功");
-                App.user = user;
-                AppManager.getAppManager().finishAllActivity();
-                intent2Activity(HomeActivity.class);
+            public void onSuccess(List<User> list) {
+                userId = list.get(0).getUserId()+1;
+                final User user = new User();
+                user.setMobilePhoneNumber(phone);
+                user.setPassword(password);
+                user.setUserId(userId);
+                user.signOrLogin(RegistActivity.this, authCode, new SaveListener() {
+                    @Override
+                    public void onSuccess() {
+                        Tt.showShort("注册成功");
+                        App.user = (User) BmobUser.getCurrentUser(getApplicationContext());
+                        AppManager.getAppManager().finishAllActivity();
+                        intent2Activity(HomeActivity.class);
+                    }
+
+                    @Override
+                    public void onFailure(int i, String s) {
+                        Tt.showLong(s);
+                    }
+                });
             }
 
             @Override
-            public void onFailure(int i, String s) {
-                Tt.showLong(s);
+            public void onError(int i, String s) {
+
             }
         });
+
+
     }
 
     @Override
