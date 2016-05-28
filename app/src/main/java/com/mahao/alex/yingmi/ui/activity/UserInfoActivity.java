@@ -77,6 +77,9 @@ public class UserInfoActivity extends BaseActivity implements DatePickerDialog.O
 
     private int mDay = 1;
 
+
+    private boolean isSetInfo = false;
+
     /**
      * 时间选择器
      */
@@ -88,17 +91,17 @@ public class UserInfoActivity extends BaseActivity implements DatePickerDialog.O
         initTitleBar();
 
 
-        mUser = User.newInstance(App.user);
+        mUser = new User();
 
-        setIcon(mUser.getUserIcon());
+        setIcon(App.user.getUserIcon());
 
-        setUserName(mUser.getUsername());
+        setUserName(App.user.getUsername());
 
-        setSex(mUser.getSex());
+        setSex(App.user.getSex());
 
-        setBirthday(mUser.getBirthday());
+        setBirthday(App.user.getBirthday());
 
-        setPhone(mUser.getMobilePhoneNumber());
+        setPhone(App.user.getMobilePhoneNumber());
 
     }
 
@@ -124,7 +127,13 @@ public class UserInfoActivity extends BaseActivity implements DatePickerDialog.O
                 //保存
 
 
+                if(!isSetInfo){
+                    Tt.showShort("您未作任何修改哦！！！");
+                    return;
+                }
+
                 Log.i("info", mUser.toString());
+                mUser.setUserId(App.user.getUserId());
                 mUser.update(getApplicationContext(), App.user.getObjectId(), new UpdateListener() {
                     @Override
                     public void onSuccess() {
@@ -135,6 +144,7 @@ public class UserInfoActivity extends BaseActivity implements DatePickerDialog.O
 
                     @Override
                     public void onFailure(int i, String s) {
+                        Log.i("info",s);
                         Tt.showLong("更新失败:" + s);
                     }
                 });
@@ -172,7 +182,7 @@ public class UserInfoActivity extends BaseActivity implements DatePickerDialog.O
 
         } else {
             mBirthDay.setText(birthday);
-            String[] split = mUser.getBirthday().split("-");
+            String[] split = birthday.split("-");
             mYear = Integer.parseInt(split[0]);
             mMonth = Integer.parseInt(split[1]);
             mDay = Integer.parseInt(split[2]);
@@ -247,6 +257,7 @@ public class UserInfoActivity extends BaseActivity implements DatePickerDialog.O
                             String fileUrl = bmobFile.getFileUrl(getApplicationContext());
                             mUser.setUserIcon(fileUrl);
                             setIcon(mUser.getUserIcon());
+                            isSetInfo = true;
                         }
 
                         @Override
@@ -308,6 +319,7 @@ public class UserInfoActivity extends BaseActivity implements DatePickerDialog.O
                         String nickName = editText.getText().toString().trim();
                         mUser.setUsername(nickName);
                         setUserName(mUser.getUsername());
+                        isSetInfo = true;
 
                     }
                 })
@@ -337,6 +349,7 @@ public class UserInfoActivity extends BaseActivity implements DatePickerDialog.O
                         String sex = which == 0 ? "男" : "女";
                         mUser.setSex(sex);
                         setSex(mUser.getSex());
+                        isSetInfo = true;
                     }
                 })
                 .create();
@@ -345,12 +358,12 @@ public class UserInfoActivity extends BaseActivity implements DatePickerDialog.O
 
     @OnClick(R.id.user_info_birthday_ll)
     public void selectBirthday() {
-        //设置生日
+       /* //设置生日
         if (mUser.getBirthday() == null) {
             //此时还未设置生日
         } else {
 
-        }
+        }*/
         mDatePcikerDialog.show();
     }
 
@@ -397,6 +410,7 @@ public class UserInfoActivity extends BaseActivity implements DatePickerDialog.O
 
         mUser.setBirthday(mYear + "-" + mMonth + "-" + mDay);
         setBirthday(mUser.getBirthday());
+        isSetInfo = true;
     }
 
     @Override

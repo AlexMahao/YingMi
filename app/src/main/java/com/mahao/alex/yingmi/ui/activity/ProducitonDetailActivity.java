@@ -112,6 +112,8 @@ public class ProducitonDetailActivity extends BaseActivity {
     }
 
     private void initTopView() {
+
+
         BitmapUtils.loadImage(mTopBg,mProduction.getFileImagePath(),BitmapUtils.GAOSI);
 
         BitmapUtils.loadImage(mPoster,mProduction.getFileImagePath());
@@ -122,6 +124,7 @@ public class ProducitonDetailActivity extends BaseActivity {
 
         mTimeView.setText(mProduction.getProduceYear());
 
+        mTitleBar.setCenterText(mProduction.getFileName());
     }
 
     @Override

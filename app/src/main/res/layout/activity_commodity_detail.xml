@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
-                    android:text="奔跑吧"
+                    android:text=""
                     android:textColor="@color/text_black"
                     android:textSize="@dimen/text_font_medium" />
 
@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
-                    android:text="￥ 100"
+                    android:text=""
                     android:textColor="@color/orange"
                     android:textSize="@dimen/text_font_large" />
 
@@ -102,7 +102,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
-                    android:text="奔跑吧"
+                    android:text=""
                     android:textColor="@color/text_gray"
                     android:textSize="@dimen/text_font_small" />
 
@@ -125,6 +125,7 @@
                     android:layout_height="180dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
+                    android:paddingBottom="10dp"
                     android:layout_marginTop="10dp">
 
                     <ImageView
@@ -152,7 +153,7 @@
                             android:layout_marginLeft="10dp"
                             android:drawableLeft="@mipmap/detail_icon_actor"
                             android:drawablePadding="10dp"
-                            android:text="王力宏"
+                            android:text="演员"
                             android:textColor="@color/white"
                             android:textSize="@dimen/text_font_small" />
 
@@ -183,7 +184,7 @@
                             android:layout_marginLeft="10dp"
                             android:drawableLeft="@mipmap/detail_icon_movie"
                             android:drawablePadding="10dp"
-                            android:text="虎力全开"
+                            android:text="电影"
                             android:textColor="@color/white"
                             android:textSize="@dimen/text_font_small" />
 
@@ -199,6 +200,76 @@
 
                 </RelativeLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="评论专区："
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/text_font_small" />
+
+
+
+                <TextView
+                    android:id="@+id/comment_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="暂无评论"
+                    android:visibility="gone"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/text_font_small" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/comment_recycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#fff" />
+
+                <LinearLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/gray_menu"
+                    android:padding="5dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <EditText
+                        android:id="@+id/comment_add_et"
+                        android:hint="请输入评论内容"
+                        android:textColor="@color/text_black"
+                        android:layout_weight="8"
+                        android:paddingLeft="10dp"
+                        android:background="@drawable/shape_talk_et"
+                        android:textSize="@dimen/text_font_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <Button
+                        android:id="@+id/comment_add_btn"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/shape_talk_et"
+                        android:text="发表"
+                        android:textColor="@color/text_black"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <include layout="@layout/layout_underline"/>
         </LinearLayout>
     </com.mahao.alex.yingmi.widget.MyScrollView>
 
@@ -211,15 +282,6 @@
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/commodity_detail_comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:src="@mipmap/detail_btn_comment_normal" />
 
 
         <ImageView

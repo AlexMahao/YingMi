@@ -179,6 +179,10 @@ public class ProductionDetailDescFragment extends BaseFragment {
             return;
         }
 
+        if(App.user.getMobilePhoneNumber().equals(App.user.getUsername())){
+            Tt.showShort("设置昵称之后才能发布说说哦");
+            return;
+        }
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd HH:mm:ss");
         String time = sdf.format(new Date(System.currentTimeMillis()));
 

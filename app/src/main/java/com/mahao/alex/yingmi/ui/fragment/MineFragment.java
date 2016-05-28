@@ -71,7 +71,13 @@ public class MineFragment extends BaseFragment {
             mLoginNoTv.setVisibility(View.GONE);
             mLoginYes.setVisibility(View.VISIBLE);
             mUserId.setText(App.user.getUserId() + "");
-            mNameTv.setText(App.user.getUsername());
+
+            if(TextUtils.isEmpty(App.user.getUsername())){
+                mNameTv.setText("未设置");
+            }else{
+                mNameTv.setText(App.user.getUsername());
+            }
+
 
         }
     }
@@ -120,10 +126,6 @@ public class MineFragment extends BaseFragment {
         intent2Activity(AboutUsActivity.class);
     }
 
-    @OnClick(R.id.mine_clear_cache)
-    public void clearCache() {
-        //清除缓存
-    }
 
     private void toLogin() {
 
@@ -137,6 +139,7 @@ public class MineFragment extends BaseFragment {
 
     @OnClick(R.id.mine_updata_app)
     public void updateApp(){
+        //检查更新
         new UpdataManager().requestVer();
     }
 }

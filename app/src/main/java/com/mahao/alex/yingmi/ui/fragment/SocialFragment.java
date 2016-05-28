@@ -120,6 +120,9 @@ public class SocialFragment extends BaseFragment {
                 if(App.user==null){
                     Tt.showShort("请先登录");
                     return;
+                }else if(App.user.getMobilePhoneNumber().equals(App.user.getUsername())){
+                    Tt.showShort("设置昵称之后才能发布说说哦");
+                    return;
                 }
                 intent2Activity(AddTalkActvity.class);
             }

@@ -262,6 +262,14 @@ public class HomeFragment extends BaseFragment implements HomeShufAdapter.OnPage
 
                         mCommodityAdapter.refresh(commodities);
                     }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        super.onError(e);
+                        mCommoditys.clear();
+                        mCommodityAdapter.notifyDataSetChanged();
+
+                    }
                 });
 
     }

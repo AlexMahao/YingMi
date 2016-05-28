@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +19,8 @@ import com.mahao.alex.yingmi.ui.fragment.ActorDetailCommodityFragment;
 import com.mahao.alex.yingmi.ui.fragment.ActorDetailDescFragment;
 import com.mahao.alex.yingmi.utils.BitmapUtils;
 import com.mahao.alex.yingmi.widget.TitleBar;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -120,13 +123,20 @@ public class ActorDetailActivity extends BaseActivity {
 
         BitmapUtils.loadImage(mPoster, mActor.getActorImagePath());
         String time = mActor.getBirthDay();
-        mYearView.setText(time.substring(0,time.indexOf("T")));
+        mYearView.setText(time.substring(0, time.indexOf("T")));
 
-        mHomeTownView.setText(mActor.getHomeTown());
+        if (TextUtils.isEmpty(mActor.getHomeTown())) {
+            mHomeTownView.setText("未知");
+        } else {
+            mHomeTownView.setText(mActor.getHomeTown());
+        }
 
-        mSexView.setText("未知");
+
+        //mSexView.setText("未知");
 
         mXingZuoView.setText(mActor.getConstellation_CN());
+
+        mTitleBar.setCenterText(mActor.getActorName());
 
     }
 

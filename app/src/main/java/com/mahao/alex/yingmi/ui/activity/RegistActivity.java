@@ -112,7 +112,7 @@ public class RegistActivity extends BaseActivity{
                     @Override
                     public void onSuccess() {
                         Tt.showShort("注册成功");
-                        App.user = (User) BmobUser.getCurrentUser(getApplicationContext());
+                       App.user = user;
                         AppManager.getAppManager().finishAllActivity();
                         intent2Activity(HomeActivity.class);
                     }
